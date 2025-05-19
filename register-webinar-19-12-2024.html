@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinar: Sage 300 Smart Techniques</title>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: calc(60% + 0.8vmin);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .cta-section {
+            background-color: #f4f4f4;
+            max-width: 70%;
+            margin: 0 auto;
+            border-top-right-radius: 2rem;
+            border-top-left-radius: 2rem;
+        }
+
+        .container-cta {
+            max-width: 70%;
+            margin: auto;
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #f4f4f4;
+        }
+
+        .container-cta h2 {
+            font-size: 1.5rem;
+        }
+
+        .container-cta p {
+            font-family: "Anuphan", sans-serif;
+            font-size: 0.9rem;
+            padding: 1rem 0;
+        }
+
+        .container-benefit-2 {
+            max-width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero-section {
+            max-width: 70%;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+        }
+
+        .hero-section h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-family: "Anuphan", sans-serif;
+            color: #003986;
+        }
+
+        .image-header {
+            max-width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-section img {
+            max-width: 100%;
+            object-fit: contain;
+            justify-content: center;
+            padding-bottom: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cta-button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: darkred;
+        }
+
+        .intro {
+            max-width: 70%;
+            margin: 0 auto;
+            padding: 3rem 3rem;
+            font-family: "Anuphan", sans-serif;
+            font-size: 0.9rem;
+            text-indent: 2rem;
+            background-color: #f4f4f4;
+        }
+
+        .intro p {
+            padding-top: 1rem;
+        }
+
+        .benefits-section {
+            background: #f4f4f4;
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 70%;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        .benefit-1,
+        .container-benefit-2 {
+            flex: 1;
+            margin: 10px;
+            padding: 1rem 2rem;
+        }
+
+        .container-benefit-2 {
+            text-align: left;
+        }
+
+        .container-benefit-2 ul {
+            list-style: none;
+            text-align: left;
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 0.8rem;
+            font-family: "Anuphan", sans-serif;
+            padding-left: 1rem;
+        }
+
+        .container-benefit-2 ul li {
+            padding-bottom: 1rem;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .container-benefit-2 ul li:nth-child(1)::before {
+            content: "\f073";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #003986;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .container-benefit-2 ul li:nth-child(2)::before {
+            content: "\f06a";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #ff9800;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .container-benefit-2 ul li:nth-child(3)::before {
+            content: "\f121";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #28a745;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .container-benefit-2 ul li:nth-child(4)::before {
+            content: "\f1c0";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #17a2b8;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+        .container-benefit-2 ul li:nth-child(5)::before {
+            content: "\f059";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #ffc107;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            font-size: 1.2rem;
+        }
+
+
+        .container-benefit-2 h2 {
+            margin-bottom: 20px;
+            font-family: "Anuphan", sans-serif;
+            background-image: linear-gradient(to right, #a40047, #0101e4);
+            padding: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        .benefit-1 ul {
+            padding-left: 3rem;
+            font-size: 0.9rem;
+            line-height: 2rem;
+            padding-top: 1rem;
+        }
+
+        .benefit-1 h2 {
+            background-color: #003986;
+            padding: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        .special {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 70%;
+        }
+
+        .icon {
+            font-size: 5rem;
+            color: rgb(197, 5, 5);
+        }
+
+        .special h3 {
+            font-family: "Montserrat", sans-serif;
+            color: rgb(197, 5, 5);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .special p {
+            font-family: "Anuphan", sans-serif;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .register-form {
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+
+        .register-form iframe {
+            display: none;
+            width: 100%;
+            height: 2000px;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.5rem;
+        }
+
+        .fade-in-container {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-container.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .background {
+            background: #000428;
+            background: -webkit-linear-gradient(to top, #004e92, #000428);
+            background: linear-gradient(to top, #004e92, #000428);
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="background">
+        <header class="hero-section fade-in-container">
+            <div class="image-header"><img src="images/Email Smart Customers Day - 2024.png" alt=""></div>
+
+            <div class="container">
+                <h1><span style="color: rgb(175, 7, 7); font-size: 2rem;">Live Webinar:</span>
+                    เคล็ดลับปิดปีอย่างมืออาชีพ<br>
+                    ลดข้อผิดพลาดและเพิ่มประสิทธิภาพการทำงานในยุคดิจิทัล</h1>
+                <p><strong>19<sup style="font-size: 0.8rem;">th</sup> December 2024</strong> | <strong>1:30 - 3:30
+                        PM</strong><br>
+                    Microsoft Teams Live</p>
+
+                <a href="https://forms.gle/vNMV3cjcqCVP4cgT7"><button class="cta-button">Reserve your spot!</button></a>
+
+                <a href="#"><button class="cta-button" style="background-color: #003986;">Download Brochure</button></a>
+            </div>
+        </header>
+        <script class="fade-in-container">
+            document.addEventListener("DOMContentLoaded", function () {
+                const services = document.querySelector(".hero-section");
+
+                function checkIfVisible() {
+                    const rect = services.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        services.classList.add("active");
+                        window.removeEventListener("scroll", checkIfVisible);
+                    }
+                }
+
+                window.addEventListener("scroll", checkIfVisible);
+                checkIfVisible();
+            });
+        </script>
+        <section class="intro fade-in-container">
+            <p>ใกล้ถึงสิ้นปีแล้ว! หากคุณกำลังมองหาวิธีลดความยุ่งยากในการปิดงวดบัญชี และเพิ่มประสิทธิภาพในการทำงาน
+                การจัดการระบบ รวมถึงการบำรุงรักษา ให้ทำงานได้สะดวก รวดเร็วขึ้น พร้อมแก้ไขปัญหาเพื่อรองรับการทำงานของ
+                Users ได้มากยิ่งขึ้น</p>
+            <p>บริษัท สมาร์ท คอนซัลติ้ง จำกัด ขอเรียนเชิญลูกค้าผู้มีอุปการคุณทุกท่านเข้าร่วม
+                <strong>สัมมนาออนไลน์ฟรี</strong> <strong style="color: #003986;">Smart’s
+                    Customers Day “Revolutionizing Year-End: Solve Problems Faster & Work Smarter with Sage 300 ERP
+                    Smart
+                    Techniques"</strong>
+            </p>
+            <p>งานสัมมนานี้จะพาคุณเรียนรู้เคล็ดลับและเทคนิคการใช้งานระบบ Sage 300 ERP พร้อมการแก้ไขปัญหาที่พบ (Error)
+                เบื้องต้นได้ อีกทั้งการเตรียมความพร้อมทางด้านการจัดการระบบ สำหรับการทำงานในปี 2025
+                ได้อย่างมีประสิทธิภาพมากขึ้น รวมถึงช่วยให้คุณจัดการงานสิ้นปีได้ง่ายขึ้น เหมาะสำหรับผู้ใช้ระบบ Sage 300
+                ERP ทุกฝ่าย อาทิเช่น ฝ่ายบัญชีและการเงิน ฝ่ายจัดซื้อ ฝ่ายไอที เป็นต้น
+                พร้อมรับคำแนะนำจากผู้เชี่ยวชาญที่มีประสบการณ์!</p>
+        </section>
+        <script class="fade-in-container">
+            document.addEventListener("DOMContentLoaded", function () {
+                const services = document.querySelector(".intro");
+
+                function checkIfVisible() {
+                    const rect = services.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        services.classList.add("active");
+                        window.removeEventListener("scroll", checkIfVisible);
+                    }
+                }
+
+                window.addEventListener("scroll", checkIfVisible);
+                checkIfVisible();
+            });
+        </script>
+        <section class="benefits-section fade-in-container"
+            style="border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;">
+            <div class="benefit-1">
+                <div class="agenda">
+                    <h2>Agenda</h2>
+                </div>
+                <ul>
+                    <li>13:30 - 13:45 Registration On-Line</li>
+                    <li>13:45 - 14:00 Welcome & Introduction</li>
+                    <li>14:00 - 14:30 Recommendations in Sage 300 ERP</li>
+                    <li>14:30 - 15:15 Tips & Tricks for Sage 300 ERP</li>
+                    <li>15:15 - 15:30 Q&A</li>
+                </ul>
+            </div>
+            <div class="container-benefit-2">
+                <h2>ประโยชน์ที่คุณจะได้รับจากงานสัมมนา:</h2>
+                <ul>
+                    <li><strong style="color: #003986;">เทคนิคการ Year End 2024 และ Create New Year 2025:</strong>
+                        เพื่อให้สามารถ process งบการเงินของปีต่อไปได้</li>
+                    <li><strong style="color: #003986;">คำแนะนำและข้อพึงระวังในการปิดปี 2024:</strong>
+                        ช่วยลดความผิดพลาดในการทำงานให้น้อยลง</li>
+                    <li><strong style="color: #003986;">เทคนิคการใช้งาน Tools สำคัญในระบบ Sage 300 ERP:</strong>
+                        ช่วยให้เข้าถึงการทำงานได้อย่างรวดเร็ว</li>
+                    <li><strong style="color: #003986;">เทคนิคการ Backup your Company Database in Sage 300 ERP:</strong>
+                        เพื่อสำรองข้อมูลในกรณีฉุกเฉิน</li>
+                    <li><strong style="color: #003986;">แนวทางการแก้ไขปัญหา (Error) เบื้องต้นได้ด้วยตนเอง:</strong> เช่น
+                        License could not be found, Sage 300 UI Container, Cannot access database เป็นต้น</li>
+                </ul>
+            </div>
+        </section>
+        <script class="fade-in-container">
+            document.addEventListener("DOMContentLoaded", function () {
+                const services = document.querySelector(".benefits-section");
+
+                function checkIfVisible() {
+                    const rect = services.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        services.classList.add("active");
+                        window.removeEventListener("scroll", checkIfVisible);
+                    }
+                }
+
+                window.addEventListener("scroll", checkIfVisible);
+                checkIfVisible();
+            });
+        </script>
+        <section class="special fade-in-container">
+            <div class="icon">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="icon-text">
+                <h3>Special Gift for you!</h3>
+                <p>ผู้เข้าร่วมจะได้รับเอกสารคู่มือ "การ Year-End & Create New Year Procedures" และคู่มือการ “Backup &
+                    Error
+                    Tips and Tricks” สำหรับปี 2025 ฟรี!</p>
+            </div>
+        </section>
+        <script class="fade-in-container">
+            document.addEventListener("DOMContentLoaded", function () {
+                const services = document.querySelector(".special");
+
+                function checkIfVisible() {
+                    const rect = services.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        services.classList.add("active");
+                        window.removeEventListener("scroll", checkIfVisible);
+                    }
+                }
+
+                window.addEventListener("scroll", checkIfVisible);
+                checkIfVisible();
+            });
+        </script>
+
+        <section class="cta-section fade-in-container">
+            <div class="container-cta">
+                <h2>Don't miss this opportunity to enhance your Sage 300 experience!</h2>
+                <p>หากท่านมีความประสงค์ที่จะขอทราบรายละเอียดเพิ่มเติมกรุณาติดต่อได้ที่ คุณกุลนิษฐ์ เนตรน้อย –
+                    ฝ่ายบริการลูกค้าที่หมายเลขโทรศัพท์ 02-972-4211-5 (5 คู่สาย)
+                    หรือ Email - support@smartconsulting.co.th</p>
+
+                <button class="cta-button" onclick="toggleIframe()">Reserve your spot!</button>
+
+                <a href="#"><button class="cta-button" style="background-color: #003986;">Download Brochure</button></a>
+            </div>
+            <div class="register-form">
+                <iframe
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfOlE5xAbPelpIeyJtLq43CjSUFRWIfcJtVJa0mYqdHeZYkTg/viewform?embedded=true"
+                    frameborder="0" marginheight="0" marginwidth="0">กำลังโหลด…</iframe>
+            </div>
+        </section>
+        <script class="fade-in-container">
+            document.addEventListener("DOMContentLoaded", function () {
+                const services = document.querySelector(".cta-section");
+
+                function checkIfVisible() {
+                    const rect = services.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        services.classList.add("active");
+                        window.removeEventListener("scroll", checkIfVisible);
+                    }
+                }
+
+                window.addEventListener("scroll", checkIfVisible);
+                checkIfVisible();
+            });
+        </script>
+
+    </section>
+    <footer class="footer">
+        <p>© 2024 Smart Consulting Co., Ltd. All Rights Reserved</p>
+    </footer>
+    <script>
+        function toggleIframe() {
+            var iframe = document.querySelector('.register-form iframe');
+            var registerForm = document.querySelector('.register-form');
+
+            if (iframe.style.display === 'none') {
+                iframe.style.display = 'block';
+
+                registerForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                iframe.style.display = 'none';
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
