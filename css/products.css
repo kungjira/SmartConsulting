@@ -1,0 +1,9049 @@
+/*////// TEMPLATE START ////////*/
+:root {
+  --default-font: "Sarabun", system-ui, -"apple-system", "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Inter", sans-serif;
+  --nav-font: "Inter", sans-serif;
+}
+
+html {
+  font-size: calc(60% + 0.8vmin);
+}
+
+body {
+  padding-top: 7.4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+.fade-in-container {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-container.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*////////////////////////////////// Navbar - Start ///////////////////////////////////*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10em;
+  background-image: linear-gradient(to right, #9CECFB, #20BDFF, #5433FF, #021B79);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  font-family: var(--nav-font);
+  font-size: 18px;
+}
+
+.logo img {
+  width: 110px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+  list-style: none;
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-links .current {
+  background-color: white;
+  color: #007BFF;
+  border-radius: 5px;
+}
+
+/* Dropdown Button Hover */
+.nav-links li:hover>a {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 230px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 0.85rem;
+}
+
+.dropdown-content a {
+  color: #004080;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #007BFF;
+}
+
+.nav-links li:hover .dropdown-content {
+  display: block;
+}
+
+/* Dropdown - Customized Programming */
+.dropdown-content-customise {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 30%;
+  background-color: #e7e6e6;
+  min-width: 220px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.dropdown-content-customise a {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.customise-nav:hover+.dropdown-content-customise,
+.dropdown-content-customise:hover {
+  display: block;
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.customise-nav:hover .arrow {
+  transform: rotate(270deg);
+}
+
+
+/* Right Section: Login */
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.button-login {
+  background-color: #20BDFF;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  font-family: "Inter";
+  font-size: 18px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #20BDFF;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 4px 0;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  font-family: "Inter";
+  font-size: 18px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img .avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 8em;
+  /*padding-left: 40em;
+  padding-right: 40em;*/
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 25%;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+.language-switcher a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.language-switcher a img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+
+/****** RESPONSIVE NAVBAR *******/
+@media (max-width: 768px) {
+  nav {
+    padding: 10px 2em;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    font-size: 15PX;
+    background-color: #021B79;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+  nav {
+    padding: 10px 2em;
+  }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+  }
+
+  /* Hide hamburger menu */
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links a {
+    font-size: 15px;
+    padding: 8px 2px;
+  }
+
+  .dropdown-content {
+    min-width: 180px;
+  }
+
+  .logo img {
+    width: 100px;
+    padding-right: 1em;
+  }
+}
+
+/*///////////////////////////////////////////Navbar - End //////////////////////////////////////////////////*/
+
+
+/*////////////// image cover///////////////////*/
+.image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+
+}
+
+.image-container img {
+  max-width: 100%;
+}
+
+.image-container .text-overlay {
+  position: absolute;
+  top: 30%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  font-family: "Inter", sans-serif;
+  font-size: 3.5vw;
+  /* Responsive font size */
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+}
+
+.text-overlay {
+
+  animation: fadeInFromLeft 2s ease-in-out forwards;
+  /* Trigger animation */
+}
+
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+    /* Start from left off screen */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    /* Move to normal position */
+  }
+}
+
+/*/////////////////////////////////////////*/
+
+
+
+/*/////////////// Footer Start ////////////////*/
+footer {
+  background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+footer * {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+footer .row {
+  padding: 1em 1em;
+}
+
+footer .row.primary {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr 1.5fr;
+  align-items: start;
+  gap: 1em;
+}
+
+footer .column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2em;
+  min-height: 15em;
+}
+
+footer .social-footer a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #a7a7a7;
+  margin: 0 5px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+footer .social-footer {
+  margin-top: 1em;
+}
+
+footer .social-footer a:hover {
+  transform: scale(1.2);
+}
+
+.social-facebook:hover {
+  background-color: #3B5998;
+  color: #ffffff;
+}
+
+.social-twitter:hover {
+  background-color: #4099FF;
+  color: #ffffff;
+}
+
+.social-line:hover {
+  background-color: #00C300;
+  color: #ffffff;
+}
+
+.social-linkedin:hover {
+  background-color: #0077b5;
+  color: #ffffff;
+}
+
+.social-youtube:hover {
+  background-color: #d34836;
+  color: #ffffff;
+}
+
+footer h3 {
+  width: 100%;
+  text-align: left;
+  color: white;
+  font-size: 1.4em;
+  white-space: nowrap;
+  margin-top: 1em;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 1em;
+}
+
+footer li:not(:first-child) {
+  margin-top: 0.8em;
+}
+
+footer ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  color: #002a53;
+}
+
+footer .about p {
+  text-align: justify;
+  line-height: 1.3;
+  margin-top: 1em;
+}
+
+footer input {
+  font-size: 1em;
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+footer button {
+  background-color: #c7940a;
+  color: #ffffff;
+  font-size: 1em;
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.copyright {
+  padding: 0.3em 1em;
+  background-color: #274193;
+}
+
+.footer-menu {
+  float: left;
+  margin-top: 10px;
+}
+
+.footer-menu a {
+  color: #cfd2d6;
+  padding: 6px;
+  text-decoration: none;
+}
+
+.footer-menu a:hover {
+  color: #27bcda;
+}
+
+.copyright p {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+footer p {
+  color: white;
+}
+
+@media screen and (max-width: 850px) {
+  .row.primary {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  footer .row.primary {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  footer h3 {
+    font-size: 1.3em;
+  }
+
+  footer p,
+  footer ul li a,
+  footer button {
+    font-size: 0.9em;
+  }
+
+  footer .about p {
+    text-align: justify;
+  }
+
+  footer .social-footer a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #a7a7a7;
+    margin: 1px 1px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 10px;
+    text-decoration: none;
+  }
+
+  footer .column {
+    width: 100%;
+    padding: 0 1em;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  footer .row.primary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  footer .column {
+    padding: 1em;
+  }
+
+  footer h3 {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  footer p,
+  footer ul li a,
+  footer input,
+  footer button {
+    font-size: 0.85em;
+  }
+
+  footer .about img {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  footer .social {
+    justify-content: center;
+    gap: 0.5em;
+  }
+
+  footer .about p {
+    text-align: justify;
+  }
+
+  footer .column {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  footer h3 {
+    font-size: 1.1em;
+  }
+
+  footer p,
+  footer ul li a,
+  footer input,
+  footer button {
+    font-size: 0.8em;
+  }
+
+  footer .social a {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  footer p {
+    text-align: left;
+  }
+}
+
+/*//////////// Footer - End /////////////*/
+
+
+/******************* CHAT BOT ***************************/
+/* Main button for floating social media and chatbot */
+.main-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.main-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.tooltip {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.main-button:hover .tooltip {
+  opacity: 1;
+  /* Show tooltip on hover */
+}
+
+/* Social media and chatbot container */
+.social-chat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  display: none;
+  z-index: 100;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 0;
+}
+
+/* Social media buttons */
+.social-buttons {
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show social buttons when parent container is displayed */
+.social-chat-container.show {
+  display: block;
+  max-height: 300px;
+}
+
+/* Show social buttons when container is expanded */
+.social-chat-container.show .social-buttons {
+  opacity: 1;
+}
+
+.social-buttons a {
+  display: block;
+  margin: 5px 0;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-buttons a:hover {
+  background-color: #333;
+}
+
+.social-buttons i {
+  font-size: 20px;
+}
+
+/* Chatbot popup */
+.chatbot-popup {
+  display: none;
+  width: 300px;
+  height: 450px;
+  background-color: white;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 100;
+}
+
+.chatbot-popup-header {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  position: relative;
+  font-size: 18px;
+}
+
+.close-button {
+  position: absolute;
+  justify-content: flex-end;
+  top: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chatbot-popup-content {
+  padding: 10px;
+  height: 330px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+.chatbot-message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* User messages on the right */
+.chatbot-message.user {
+  justify-content: flex-end;
+}
+
+/* Bot messages on the left */
+.chatbot-message.bot {
+  justify-content: flex-start;
+}
+
+/* ข้อความของบอท */
+.chatbot-message.bot .chatbot-text {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-size: 15px;
+}
+
+/* ข้อความของผู้ใช้ */
+.chatbot-message.user .chatbot-text {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-size: 15px;
+}
+
+.chatbot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chatbot-text {
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 200px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.chatbot-input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chatbot-input {
+  flex-grow: 1;
+  /* ทำให้ input ยาวที่สุด */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.send-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+.hide {
+  display: none;
+}
+
+/************* END CHAT BOT ******************/
+
+/*////////////// SECONDARY NAVIGATION BAR /////////////*/
+.sub-nav {
+  position: fixed;
+  top: 3.3rem;
+  width: 100%;
+  z-index: 999;
+}
+
+.secondary-navbar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.brand h2 {
+  height: 40px;
+  margin-left: 7em;
+  vertical-align: middle;
+  padding-top: 0.3em;
+}
+
+.brand {
+  max-width: 30%;
+}
+
+.sub-menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-menu li {
+  margin-left: 40px;
+}
+
+.sub-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sub-menu a:hover {
+  color: #00d639;
+}
+
+.request-info {
+  background-color: #00d639;
+  color: #333;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  max-width: fit-content;
+  margin-right: 18em;
+}
+
+.request-info:hover {
+  background-color: transparent;
+  border: 2px solid #00d639;
+}
+
+.request-info a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.secondary-navbar a:hover {
+  color: white;
+}
+
+.sub-hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+
+.sub-hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+.sub-menu li a.current-page {
+  position: relative;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sub-menu li a.current-page::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #00d639;
+}
+
+.sub-menu li a.current-page:hover {
+  color: #00d639;
+}
+
+/* Product More Information Button */
+.more-info-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+.more-info-btn button {
+  background-color: #01b430;
+  font-size: 0.9rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.more-info-btn button:hover {
+  background-color: transparent;
+  border: 2px solid #00d639;
+}
+
+/* Dropdown sub-nav */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #353f47;
+  display: none;
+  border: 1px solid #00d639;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  font-size: 0.6rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: #00d639;
+  color: #333;
+  border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .secondary-navbar {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 10px 10px;
+  }
+
+  .sub-menu {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+
+  .brand h2 {
+    width: 11rem;
+    margin-left: 1rem;
+
+  }
+
+  .sub-menu li {
+    margin: 0.6rem 0;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .request-info {
+    margin: 1rem;
+    width: 25rem;
+    font-size: 0.75rem;
+  }
+
+  .sub-hamburger {
+    display: flex;
+  }
+
+  .sub-menu.show {
+    display: flex;
+    width: 1250px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 900px) {
+  .secondary-navbar {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 10px 10px;
+  }
+
+  .sub-menu {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+  }
+
+  .brand h2 {
+    width: 11rem;
+    margin-left: 1rem;
+
+  }
+
+  .sub-menu li {
+    margin: 0.6rem 0;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .request-info {
+    margin: 1rem;
+    width: 25rem;
+    font-size: 0.75rem;
+  }
+
+  .sub-hamburger {
+    display: flex;
+  }
+
+  .sub-menu.show {
+    display: flex;
+    width: 93.75rem;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+  .sub-nav {
+    padding-top: 1rem;
+  }
+
+  .brand h2 {
+    margin-left: 1em;
+    font-size: 1.1rem;
+  }
+
+  .request-info {
+    margin-right: 1em;
+  }
+
+  .sub-menu li {
+    margin-left: 20px;
+  }
+
+  .sub-menu a {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .secondary-navbar {
+    justify-content: space-between;
+    padding: 1.25rem 4.3rem;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .brand h2 {
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
+
+  .sub-menu {
+    gap: 0.1rem;
+  }
+
+  .sub-menu a {
+    font-size: 0.85rem;
+  }
+
+  .sub-menu li a.current-page {
+    font-size: 1rem;
+  }
+
+  .request-info {
+    margin-right: 0;
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+
+  .sub-hamburger {
+    display: none;
+  }
+}
+
+/* REQUEST INFORMATION BUTTON */
+.btn-request-info {
+  background-color: #00fc00;
+  max-width: fit-content;
+  color: black;
+  font-size: 0.9rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  border-radius: 50px;
+  border: none;
+}
+
+.btn-request-info:hover {
+  background-color: transparent;
+  border: 2px solid #00d639;
+  color: white;
+}
+
+/*////////////// END - TEMPLATE SETTING /////////////////*/
+
+/* SAGE 300 OVERVIEW PAGE */
+.sage300erp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #1d252c;
+  border: none;
+  padding: 3rem;
+}
+
+.container-sage300 {
+  position: relative;
+  overflow: hidden;
+  max-width: 90%;
+  border: none;
+  margin: 0 auto;
+}
+
+.all-in-one-card h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-align: left;
+  max-width: 100%;
+  line-height: 2rem;
+
+}
+
+.all-in-one-card {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding-top: 1rem;
+}
+
+.left-container-sage300 {
+  flex: 1;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1em;
+}
+
+.left-inner-container-sage300 button {
+  background-color: #009d30;
+  color: white;
+  width: fit-content;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.left-container-sage300 .button-secondary-overview {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.left-container-sage300 .button-secondary-overview:hover {
+  color: #00d639;
+  border-color: #00d639;
+}
+
+.right-container-sage300 {
+  display: flex;
+  flex: 1;
+  height: 28.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container-sage300 {
+  display: flex;
+  flex: 1;
+  height: 28.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-inner-container-sage300 {
+  height: 80%;
+  text-align: center;
+}
+
+.left-inner-container-sage300 {
+  width: 100%;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.right-container-sage300 img {
+  width: 95%;
+  align-items: left;
+}
+
+@media only screen and (max-width: 600px) {
+  .sage300erp {
+    padding: 4rem 1rem 3rem 1rem;
+  }
+
+  .container-sage300 {
+    width: 100%;
+  }
+
+  .all-in-one-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .right-inner-container-sage300 img {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .sage300erp {
+    padding: 3rem 1rem 3rem 1rem;
+  }
+
+  .container-sage300 {
+    width: 100%;
+  }
+
+  .all-in-one-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .right-inner-container-sage300 img {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container-sage300 {
+    width: 100%;
+  }
+
+  .all-in-one-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .left-inner-container-sage300 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage300 img {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-sage300 {
+    max-width: 100%;
+  }
+
+  .left-inner-container-sage300 {
+    width: 100%;
+  }
+
+  .left-inner-container-sage300 h2 {
+    font-size: 2.2rem;
+  }
+
+  .left-inner-container-sage300 button {
+    font-size: 0.85rem;
+  }
+
+  .left-container-sage300 .button-secondary-overview {
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-sage300 {
+    max-width: 95%;
+  }
+}
+
+/* แบบฟอร์มติดต่อเจ้าหน้าที่ - Sage 300 Oveview Page */
+.modal-contactUs {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-contact-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  font-family: 'Anuphan', sans-serif;
+}
+
+.modal-contact-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal-contact-content label {
+  display: block;
+  margin-top: 0.7rem;
+  font-weight: 600;
+  color: #414141;
+}
+
+.modal-contact-content input,
+.modal-contact-content textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-contact-content button[type="submit"] {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #00d639;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Anuphan", sans-serif;
+}
+
+.modal-contact-content .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.modal-contact-content .close:hover {
+  color: #000;
+}
+
+/* END - CONTACT FORM MODAL */
+
+/* KEY FEATURES - SECTION */
+.container-keyFeature {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 5rem 2rem 5rem;
+  margin: 0 auto;
+  gap: 3.12rem;
+  justify-content: center;
+  max-width: 90%;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+}
+
+.features-section,
+.feature-details-section,
+.feature-image-section {
+  flex: 1 1 12rem;
+}
+
+.feature-details-section {
+  padding-top: 2.5rem;
+}
+
+.features-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.features-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.features-list {
+  list-style: none;
+}
+
+.features-list li {
+  padding: 0.6rem 0.93rem;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-list li.active-heading {
+  background-color: #f1f1f1;
+  border-left: 3px solid #00c853;
+  font-weight: bold;
+}
+
+.feature-details-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-details-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5em;
+}
+
+.btn-features {
+  background-color: #008146;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  width: fit-content;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.feature-image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+  .container-keyFeature {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .features-section,
+  .feature-details-section,
+  .feature-image-section {
+    width: 100%;
+  }
+}
+
+/* WHAT'S NEW IN SAGE 300 ERP 2024 */
+.sage300Erp-2024 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  border: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container-sage300-2024 {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  max-width: 90%;
+  border: none;
+  margin-top: 2em;
+  background-color: #1d252c;
+  box-shadow: 0 0.87rem 1.75rem rgba(0, 0, 0, 0.25), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.22);
+}
+
+.sage300-2024-card h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-align: left;
+  width: 100%;
+  line-height: 1.1em;
+
+}
+
+.sage300-2024-card {
+  display: flex;
+  background-color: transparent;
+  border: none;
+}
+
+.left-container-sage300-2024 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+}
+
+.left-inner-container-sage300-2024 button {
+  background-color: #009d30;
+  color: white;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.left-container-sage300-2024 .button-secondary {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1em 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.left-container-sage300-2024 .button-secondary:hover {
+  color: #00d639;
+  border-color: #00d639;
+}
+
+.right-container-sage300-2024 {
+  display: flex;
+  flex: 1;
+  height: 28.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container-sage300-2024 p {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  text-indent: 0;
+  color: white;
+  font-style: 400;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.right-inner-container-sage300-2024 {
+  max-width: 100%;
+  text-align: center;
+}
+
+.left-inner-container-sage300-2024 {
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.right-container-sage300-2024 img {
+  max-width: 90%;
+  align-items: center;
+  border-radius: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-sage300-2024 {
+    width: 100%;
+    height: auto;
+  }
+
+  .sage300-2024-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .sage300-2024-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300-2024,
+  .right-container-sage300-2024 {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .left-container-sage300-2024 {
+    padding: 2em;
+  }
+
+  .right-inner-container-sage300-2024 img {
+    max-width: 80%;
+  }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .container-sage300-2024 {
+    width: 100%;
+    height: auto;
+  }
+
+  .sage300-2024-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .sage300-2024-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300-2024,
+  .right-container-sage300-2024 {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .left-container-sage300-2024 {
+    padding: 2em;
+  }
+
+  .right-inner-container-sage300-2024 img {
+    max-width: 85%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-sage300-2024 {
+    width: 100%;
+  }
+
+  .sage300-2024-card {
+    flex-direction: row;
+  }
+
+  .sage300-2024-card h2 {
+    font-size: 2.3rem;
+  }
+
+  .left-container-sage300-2024,
+  .right-container-sage300-2024 {
+    max-width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-inner-container-sage300-2024 {
+    max-width: 100%;
+  }
+
+  .right-inner-container-sage300-2024 img {
+    max-width: 85%;
+    padding-top: 2em;
+    border-radius: 30px;
+  }
+
+  .left-container-sage300-2024 p {
+    text-align: left;
+    font-size: 0.8rem;
+  }
+
+  .left-inner-container-sage300-2024 button {
+    font-size: 0.8rem;
+    width: fit-content;
+  }
+
+  .left-container-sage300-2024 .button-secondary {
+    font-size: 0.8rem;
+    width: fit-content;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-sage300-2024 {
+    max-width: 90%;
+  }
+
+  .sage300-2024-card {
+    flex-direction: row;
+  }
+
+  .sage300-2024-card h2 {
+    font-size: 2.4rem;
+  }
+
+  .left-container-sage300-2024,
+  .right-container-sage300-2024 {
+    max-width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-inner-container-sage300-2024 {
+    max-width: 100%;
+  }
+
+  .right-inner-container-sage300-2024 img {
+    max-width: 80%;
+    padding: 1rem;
+    border-radius: 30px;
+  }
+
+  .left-container-sage300-2024 p {
+    text-align: left;
+    font-size: 1rem;
+  }
+}
+
+/* SAGE 300 PRODUCT UPDATE - SECTION */
+.sage300-PU {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  border: none;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.container-sage300-PU {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  border: none;
+  margin-top: 2em;
+}
+
+.left-inner-container-sage300-PU h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  width: 100%;
+  line-height: 1em;
+
+}
+
+.sage300-PU-card {
+  display: flex;
+  background-color: transparent;
+  border: none;
+}
+
+.left-container-sage300-PU {
+  flex: 1;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5em;
+  padding-right: 1em;
+}
+
+.left-inner-container-sage300-PU button {
+  background-color: #009d30;
+  color: #000;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  padding: 1em 1em;
+}
+
+.left-container-sage300-PU .button-secondary {
+  background-color: transparent;
+  border: 2px solid #009d30;
+  font-size: 1rem;
+  color: #009d30;
+  font-weight: 600;
+  padding: 1em 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.left-container-sage300-PU .button-secondary:hover {
+  color: white;
+  border-color: #00d639;
+  background-color: #333;
+}
+
+.left-container-sage300-PU {
+  display: flex;
+  flex: 1;
+  height: 480px;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container-sage300-PU p {
+  font-size: 1.2rem;
+  line-height: 1.4em;
+  text-indent: 0;
+  text-align: center;
+  color: #000;
+  font-style: 400;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 1em;
+  padding-top: 2em;
+}
+
+.left-inner-container-sage300-PU {
+  width: 80%;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+@media only screen and (max-width: 600px) {
+  .container-sage300-PU {
+    width: 100%;
+    height: auto;
+  }
+
+  .sage300-PU-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .sage300-PU-card {
+    flex-direction: column;
+  }
+
+  .left-container-sage300-PU {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+  .container-sage300-PU {
+    width: 100%;
+  }
+
+  .sage300-PU-card {
+    flex-direction: row;
+  }
+
+  .left-container-sage300-PU {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .left-inner-container-sage300-PU {
+    width: 100%;
+  }
+
+  .left-container-sage300-PU p {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container-sage300-PU {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .container-sage300-PU {
+    width: 90%;
+  }
+
+  .sage300-PU-card h2 {
+    font-size: 2.1rem;
+    margin-top: 1em;
+  }
+}
+
+
+/* Sage 300 Key Feature Page */
+.sage300erp-keyFeature-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #1d252c;
+  border: none;
+}
+
+.container-sage300-keyFeature {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  max-width: 80%;
+  height: fit-content;
+  padding-bottom: 3rem;
+  border: none;
+  margin-top: 2rem;
+}
+
+.sage300-card h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-align: left;
+  max-width: 100%;
+  line-height: 2rem;
+
+}
+
+.sage300-card {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding-top: 1rem;
+}
+
+.left-container-sage300 {
+  flex: 1;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1rem;
+}
+
+.left-inner-container-keyFeature button {
+  background-color: #009d30;
+  color: white;
+  max-width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.left-container-sage300 .button-secondary {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.left-container-sage300 .button-secondary:hover {
+  color: #00d639;
+  border-color: #00d639;
+}
+
+.right-container-sage300 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container-sage300 {
+  display: flex;
+  flex: 1;
+  height: 30rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-inner-container-keyFeature p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  text-indent: 0;
+  color: white;
+  font-style: 400;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.right-inner-container-keyFeature {
+  max-width: 100%;
+  text-align: center;
+}
+
+.left-inner-container-keyFeature {
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.right-inner-container-keyFeature img {
+  width: 60%;
+  max-width: 100%;
+  align-items: left;
+  padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .sage300erp-keyFeature-page {
+    padding-top: 2rem;
+  }
+
+  .container-sage300-keyFeature {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .sage300-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .left-inner-container-keyFeature p {
+    font-size: 0.9rem;
+  }
+
+  .sage300-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-keyFeature,
+  .right-inner-container-keyFeature {
+    width: 100%;
+  }
+
+  .right-inner-container-keyFeature img {
+    max-width: 70%;
+    max-width: 70%;
+    padding: 1rem 0 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .sage300erp-keyFeature-page {
+    padding-top: 1rem;
+  }
+
+  .container-sage300-keyFeature {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .sage300-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .left-inner-container-keyFeature p {
+    font-size: 0.9rem;
+  }
+
+  .sage300-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-keyFeature,
+  .right-inner-container-keyFeature {
+    width: 100%;
+  }
+
+  .right-inner-container-keyFeature img {
+    width: 60%;
+    max-width: 70%;
+    padding: 1rem 0 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container-sage300-keyFeature {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .sage300-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .left-inner-container-keyFeature p {
+    font-size: 0.9rem;
+  }
+
+  .sage300-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-keyFeature,
+  .right-inner-container-keyFeature {
+    width: 100%;
+  }
+
+  .right-inner-container-keyFeature img {
+    width: 50%;
+    max-width: 70%;
+    padding: 2rem 0 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-sage300-keyFeature {
+    max-width: 90%;
+  }
+
+  .sage300-card {
+    flex-direction: row;
+    padding-top: 1.5rem;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .left-inner-container-keyFeature {
+    width: 100%;
+  }
+
+  .right-inner-container-keyFeature img {
+    width: 80%;
+  }
+
+  .sage300-card h2 {
+    font-size: 2.5rem;
+  }
+
+  .left-container-sage300 p {
+    text-align: left;
+
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-sage300-keyFeature {
+    max-width: 90%;
+  }
+
+  .sage300-card {
+    flex-direction: row;
+    padding-top: 1.5rem;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .left-inner-container-keyFeature {
+    width: 100%;
+  }
+
+  .right-inner-container-keyFeature img {
+    width: 60%;
+  }
+
+  .sage300-card h2 {
+    font-size: 2.5rem;
+  }
+
+  .left-container-sage300 p {
+    text-align: left;
+
+  }
+}
+
+.prepare-your-business {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3em 0;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.prepare-your-business h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.1em;
+}
+
+.prepare-your-business p {
+  color: #000;
+  font-weight: 500;
+  font-size: 19px;
+  max-width: 850px;
+  line-height: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .prepare-your-business h2 {
+    font-size: 2rem;
+  }
+
+  .prepare-your-business p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prepare-your-business h2 {
+    font-size: 1.8rem;
+  }
+
+  .prepare-your-business p {
+    font-size: 14px;
+  }
+}
+
+/**/
+.prepare-your-business2 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 2em;
+}
+
+.container-prepare2 {
+  width: 100%;
+  padding: 0 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row-prepare2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.prepare-card i {
+  font-size: 50px;
+  color: #00a159;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border: 2px solid #00a159;
+  border-radius: 10%;
+  padding: 15px;
+  background-color: transparent;
+  width: 70px;
+  height: 70px
+}
+
+.row-prepare2 .prepare-card {
+  padding: 25px 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.container-services-page p {
+  text-align: center;
+  padding: 1em;
+}
+
+.row-prepare2 .prepare-card:hover {
+  color: white;
+  background-color: #00a159;
+  transform: scale(1.05);
+}
+
+.row-prepare2 .prepare-card i {
+  margin-bottom: 20px;
+  font-size: 40px;
+  transition: 0.5s;
+}
+
+.row-prepare2 .prepare-card:hover i {
+  color: #fff;
+  border-color: #fff;
+}
+
+.prepare-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 300px;
+  transition: all 0.3s ease-in-out;
+}
+
+.prepare-card h3 {
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.prepare-card p {
+  font-size: 14px;
+  color: #4d4d4d;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+}
+
+.row-prepare2 .prepare-card:hover h3,
+.row-prepare2 .prepare-card:hover p {
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .row-prepare2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+
+  .prepare-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .row-prepare2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .row-prepare2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-prepare2 {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+  }
+}
+
+/* FINANCIAL TOOLS - SECTION */
+.container-financeTools {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em 2em 2em 2em;
+  gap: 3.12rem;
+  justify-content: center;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+}
+
+.finance-features-section,
+.feature-details-finance {
+  flex: 1 1 18.75rem;
+}
+
+.finance-image-section {
+  flex: 2 1 31.25rem;
+}
+
+.feature-details-finance {
+  padding-top: 2.5rem;
+}
+
+.finance-features-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.finance-features-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.features-list-finance {
+  list-style: none;
+}
+
+.features-list-finance li {
+  padding: 0.6rem 0.93rem;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-list-finance li.active-heading {
+  background-color: #f1f1f1;
+  border-left: 3px solid #00c853;
+  font-weight: bold;
+}
+
+.feature-details-finance h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-details-finance p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5rem;
+}
+
+.brochure-financeTools {
+  background-color: #008146;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  width: fit-content;
+  border: none;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  margin-right: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.finance-image-section img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 3rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+  .container-financeTools {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    gap: 0.6rem;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    flex: 1 1 6.25rem;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    max-width: 95%;
+  }
+
+  .finance-image-section {
+    max-width: 90%;
+  }
+
+  .finance-image-section {
+    flex: 1 1 100%;
+  }
+
+  .finance-image-section img {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container-financeTools {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    gap: 0.6rem;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    flex: 1 1 6.25rem;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    max-width: 95%;
+  }
+
+  .finance-image-section {
+    max-width: 90%;
+  }
+
+  .finance-image-section {
+    flex: 1 1 100%;
+  }
+
+  .finance-image-section img {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+  .finance-features-section,
+  .feature-details-finance {
+    flex: 1 1 18.75rem;
+  }
+
+  .finance-image-section {
+    flex: 2 1 31.25rem;
+  }
+
+  .container-financeTools {
+    padding: 3rem;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .finance-features-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .finance-features-section p {
+    font-size: 0.9rem;
+  }
+
+  .features-list-finance li {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .feature-details-finance h3 {
+    font-size: 1.3rem;
+  }
+
+  .feature-details-finance p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .brochure-financeTools {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .finance-image-section img {
+    margin-top: 2rem;
+    max-width: 80%;
+    height: auto;
+    border-radius: 0.3rem;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-financeTools {
+    padding: 3rem;
+    gap: 2.5rem;
+    width: 100%;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    flex: 1 1 12rem;
+  }
+
+  .finance-image-section {
+    flex: 1 1 20rem;
+  }
+
+  .finance-features-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .finance-features-section p {
+    font-size: 0.85rem;
+  }
+
+  .features-list-finance li {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .feature-details-finance h3 {
+    font-size: 1.3rem;
+  }
+
+  .feature-details-finance p {
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+  }
+
+  .brochure-financeTools a {
+    font-size: 0.85rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .finance-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-financeTools {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    gap: 2.5rem;
+    max-width: 100%;
+  }
+
+  .finance-features-section,
+  .feature-details-finance {
+    flex: 1 1 12rem;
+  }
+
+  .finance-image-section {
+    flex: 1 1 20rem;
+  }
+
+  .finance-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* END - FINANCIAL TOOLS*/
+
+/* SALES ORDER MANAGEMENT - SECTION */
+.operation-features-section {
+  flex: 1 1 300px;
+}
+
+.operation-features-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.operation-features-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5rem;
+  text-indent: 1rem;
+}
+
+.features-list-operations {
+  list-style: none;
+}
+
+.features-list-operations li {
+  padding: 0.6rem 0.93rem;
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-list-operations li.active-heading {
+  background-color: #f1f1f1;
+  border-left: 3px solid #00c853;
+  font-weight: bold;
+}
+
+.feature-details-operations {
+  flex: 1 1 18.75rem;
+}
+
+.operations-image-section {
+  flex: 2 1 31.5rem;
+}
+
+.operations-image-section img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 3rem;
+  border-radius: 0.31rem;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.feature-details-operations {
+  padding-top: 2.5rem;
+}
+
+.feature-details-operations h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-details-operations p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5rem;
+  text-indent: 1rem;
+}
+
+@media (max-width: 600px) {
+  .container-financeTools {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    gap: 0.6rem;
+  }
+
+  .operation-features-section,
+  .feature-details-operations {
+    max-width: 95%;
+  }
+
+  .operations-image-section {
+    max-width: 90%;
+  }
+
+  .feature-details-operations {
+    flex: 1 1 6.25rem;
+  }
+
+  .operations-image-section {
+    flex: 1 1 100%;
+  }
+
+  .operations-image-section img {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+  .operation-features-section,
+  .feature-details-operations {
+    flex: 1 1 18.75rem;
+  }
+
+  .operations-image-section {
+    flex: 2 1 31.25rem;
+  }
+
+  .operation-features-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .operation-features-section p {
+    font-size: 0.9rem;
+  }
+
+  .features-list-operations li {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .feature-details-operations h3 {
+    font-size: 1.3rem;
+  }
+
+  .feature-details-operations p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .brochure-financeTools {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .operations-image-section img {
+    margin-top: 2rem;
+    max-width: 80%;
+    height: auto;
+    border-radius: 0.3rem;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+
+  .operation-features-section,
+  .feature-details-operations {
+    flex: 1 1 12rem;
+  }
+
+  .operations-image-section {
+    flex: 2 1 20rem;
+  }
+
+  .operation-features-section p,
+  .feature-details-operations p {
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+  }
+
+  .operation-features-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .feature-details-operations h3 {
+    font-size: 1.3rem;
+  }
+
+  .features-list-operations li {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .operations-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+
+  .operation-features-section,
+  .feature-details-operations {
+    flex: 1 1 12rem;
+  }
+
+  .operations-image-section {
+    flex: 1 1 20rem;
+  }
+
+  .operations-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* INVENTORY TOOLS - SECTION */
+.inventory-section {
+  margin-top: 3rem;
+}
+
+.container-inventoryTools {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2em 2em 2em 2em;
+  gap: 3.12rem;
+  justify-content: center;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+}
+
+.inventory-features-section,
+.feature-details-inventoryTools {
+  flex: 1 1 18.25rem;
+}
+
+.inventory-image-section {
+  flex: 2 1 31.25rem;
+}
+
+.feature-details-inventoryTools {
+  padding-top: 2.5rem;
+}
+
+.inventory-features-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.inventory-features-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.features-list-inventoryTools {
+  list-style: none;
+}
+
+.features-list-inventoryTools li {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-list-inventoryTools li.active-heading {
+  background-color: #f1f1f1;
+  border-left: 3px solid #00c853;
+  font-weight: bold;
+}
+
+.feature-details-inventoryTools h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-details-inventoryTools p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5rem;
+  text-indent: 1rem;
+}
+
+.brochure-financeTools {
+  background-color: #008146;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  width: fit-content;
+  border: none;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  margin-right: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.inventory-image-section img {
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius: 0.31rem;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+  .container-inventoryTools {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+    gap: 0.6rem;
+  }
+
+  .feature-details-inventoryTools {
+    flex: 1 1 10rem;
+  }
+
+  .inventory-features-section,
+  .feature-details-inventoryTools {
+    max-width: 95%;
+  }
+
+  .inventory-image-section {
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0em 0 2rem 2rem;
+  }
+
+  .inventory-image-section {
+    flex: 1 1 100%;
+  }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .container-inventoryTools {
+    max-width: 100%;
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  .inventory-image-section {
+    flex: 1 1 100%;
+    max-width: 95%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-inventoryTools {
+    padding: 3rem;
+    gap: 2.5rem;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .inventory-features-section,
+  .feature-details-inventoryTools {
+    flex: 1 1 12rem;
+  }
+
+  .inventory-image-section {
+    flex: 1 1 20rem;
+  }
+
+  .features-list-inventoryTools li {
+    font-size: 0.85rem;
+  }
+
+  .inventory-features-section p,
+  .feature-details-inventoryTools p {
+    font-size: 0.85rem;
+  }
+
+  .inventory-features-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .feature-details-inventoryTools h3 {
+    font-size: 1.3rem;
+  }
+
+  .inventory-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-inventoryTools {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 2.5rem;
+    max-width: 100%;
+  }
+
+  .inventory-features-section,
+  .feature-details-inventoryTools {
+    flex: 1 1 12rem;
+  }
+
+  .inventory-image-section {
+    flex: 1 1 20rem;
+  }
+
+  .inventory-image-section img {
+    max-width: 100%;
+    margin-top: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  }
+}
+
+
+/* INTEGRATED PAYMENTS - SECTION */
+.integrated-payments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.container-integrated-payments {
+  display: flex;
+  align-items: center;
+  gap: 3.125rem;
+  max-width: 80%;
+  justify-content: center;
+}
+
+.sage300-IntegratedPayment-image {
+  max-width: 30%;
+  height: auto;
+}
+
+.content-integrated-payments h2 {
+  font-size: 2.18rem;
+  font-weight: 800;
+  margin: 0;
+  padding-bottom: 0.7rem;
+}
+
+.content-integrated-payments h3 {
+  padding-bottom: 0.2rem;
+}
+
+.content-integrated-payments p {
+  margin-top: 0.5rem;
+  line-height: 1.7rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .container-integrated-payments {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .content-integrated-payments {
+    max-width: 90%;
+  }
+
+  .sage300-IntegratedPayment-image {
+    max-width: 70%;
+    height: auto;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .container-integrated-payments {
+    max-width: 90%;
+  }
+
+  .sage300-IntegratedPayment-image {
+    max-width: 50%;
+  }
+
+  .content-integrated-payments {
+    max-width: 95%;
+  }
+
+  .content-integrated-payments h2 {
+    font-size: 2rem;
+  }
+
+  .content-integrated-payments h3 {
+    font-size: 1rem;
+  }
+
+  .content-integrated-payments p {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* SAGE BUSINESS INTELLIGENCE - SECTION */
+.BI-section {
+  margin: 3rem 0;
+}
+
+.container-BI {
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+.container-BI h2 {
+  font-size: 2.2rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.BI-text p {
+  font-family: "Anuphan", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.BI-text-list {
+  font-family: "Anuphan", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.BI-list {
+  padding: 0.5rem 0 1rem 2rem;
+  font-size: 1rem;
+}
+
+.BI-list li {
+  margin-bottom: 0.5rem;
+}
+
+.BI-license-list {
+  padding: 0 0 1rem 3rem;
+  line-height: 1.5;
+}
+
+/**/
+.feature-details-BI {
+  flex: 1 1 18.25rem;
+}
+
+.BI-image-section {
+  flex: 2 1 31.25rem;
+}
+
+.BI-image-section img {
+  max-width: 100%;
+  margin-top: 2rem;
+  border-radius: 0.31rem;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.feature-details-BI {
+  padding-top: 2.5rem;
+}
+
+.BI-features-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.BI-features-section p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.features-list-BI {
+  list-style: none;
+}
+
+.features-list-BI li {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.features-list-BI li.active-heading {
+  background-color: #f1f1f1;
+  border-left: 3px solid #00c853;
+  font-weight: bold;
+}
+
+.feature-details-BI h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-details-BI p {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5rem;
+  text-indent: 1rem;
+}
+
+
+/* Best practices for choosing an ERP system - Section */
+.best-practises {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.container-best-practices {
+  display: flex;
+  align-items: center;
+  padding: 2.2rem;
+  gap: 3.12rem;
+  max-width: 75%;
+  justify-content: center;
+  background-color: #1d252c;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 2rem
+}
+
+.content-best-practices button {
+  background-color: transparent;
+  border: 0.063rem solid white;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.9rem 0.9rem;
+  margin-bottom: 1rem;
+  max-width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.content-best-practices button:hover {
+  background-color: #00d639;
+  border-color: #00d639;
+}
+
+
+.content-best-practices {
+  max-width: 50%;
+}
+
+.best-practices-image {
+  max-width: 50%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+
+.content-best-practices h2 {
+  font-size: 2.18rem;
+  font-weight: 800;
+  margin: 0;
+  padding-bottom: 0.7rem;
+}
+
+.content-best-practices p {
+  margin-top: 0.5rem;
+  line-height: 1.7em;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .best-practises {
+    margin: 5rem 2rem 5rem 2rem;
+  }
+
+  .container-best-practices {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .content-best-practices {
+    max-width: 100%;
+  }
+
+  .best-practices-image {
+    max-width: 95%;
+    height: auto;
+  }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .best-practises {
+    margin: 5rem 2rem 5rem 2rem;
+  }
+
+  .container-best-practices {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .content-best-practices {
+    max-width: 100%;
+  }
+
+  .best-practices-image {
+    max-width: 95%;
+    height: auto;
+  }
+
+  .container-how-Sage-help-you h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .best-practises {
+    margin: 5rem 2rem 5rem 2rem;
+  }
+
+  .container-best-practices {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .content-best-practices {
+    max-width: 100%;
+  }
+
+  .best-practices-image {
+    max-width: 95%;
+    height: auto;
+  }
+
+  .container-how-Sage-help-you h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-best-practices {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .content-best-practices h2 {
+    font-size: 1.9rem;
+  }
+
+  .content-best-practices p {
+    font-size: 0.93rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-best-practices {
+    max-width: 85%;
+    padding: 2rem;
+  }
+
+  .content-best-practices h2 {
+    font-size: 2rem;
+  }
+
+  .content-best-practices p {
+    font-size: 0.93rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* IMPLEMENT GUIDE - SECTION */
+.migrationGuide-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 2rem 5rem 2rem;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-how-Sage-help-you {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .migrationGuide-section {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-how-Sage-help-you {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .migrationGuide-section {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+
+/* Interested in learning how Sage can help your business? */
+.container-how-Sage-help-you {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.container-how-Sage-help-you h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 3rem;
+}
+
+.container-how-Sage-help-you p {
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  max-width: 53.125rem;
+  line-height: 1.5rem;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button-moreDeatail {
+  background-color: #009d30;
+  color: white;
+  width: fit-content;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 0.8rem;
+}
+
+.button-container a {
+  text-decoration: none;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+.button-bookDemo {
+  border: 0.063rem solid #00d639;
+  background-color: whitesmoke;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.8rem 0.8rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #00d639;
+  color: white;
+  border-color: #00d639;
+}
+
+/* What’s New In Sage 300 ERP 2024 - PAGE */
+.what-is-new2024-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #1d252c;
+  border: none;
+}
+
+.container-sage300-keyFeature {
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  max-width: 80%;
+  height: fit-content;
+  padding-bottom: 3rem;
+  border: none;
+  margin-top: 2rem;
+}
+
+.sage300v2024-card h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-align: left;
+  max-width: 100%;
+  line-height: 3rem;
+
+}
+
+.sage300v2024-card {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding-top: 1rem;
+}
+
+.left-container-sage300v2024 {
+  flex: 1;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 1rem;
+}
+
+.left-inner-container-sage2024 button {
+  background-color: #009d30;
+  color: white;
+  max-width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.left-container-sage300v2024 .button-secondary {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.left-container-sage300v2024 .button-secondary:hover {
+  color: #00d639;
+  border-color: #00d639;
+}
+
+.right-container-sage300v2024 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-container-sage300v2024 {
+  display: flex;
+  flex: 1;
+  height: 30rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-inner-container-sage2024 p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  text-indent: 0;
+  color: white;
+  font-style: 400;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.right-inner-container-sage2024 {
+  max-width: 100%;
+  text-align: center;
+}
+
+.left-inner-container-sage2024 {
+  max-width: 100%;
+  text-align: left;
+  line-height: 1.5rem;
+}
+
+.right-inner-container-sage2024 img {
+  width: 60%;
+  max-width: 100%;
+  align-items: left;
+  padding: 1rem;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .what-is-new2024-header {
+    padding-top: 2rem;
+  }
+
+  .container-sage300-keyFeature {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .sage300v2024-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .left-inner-container-sage2024 p {
+    font-size: 0.9rem;
+  }
+
+  .sage300v2024-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-sage2024,
+  .right-inner-container-sage2024 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage2024 img {
+    width: 90%;
+    max-width: 100%;
+    padding: 1rem 0 1rem;
+    align-items: center;
+    border-radius: 20px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .what-is-new2024-header {
+    padding-top: 1rem;
+  }
+
+  .container-sage300-keyFeature {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .sage300v2024-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .left-inner-container-sage2024 p {
+    font-size: 0.9rem;
+  }
+
+  .sage300v2024-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-sage2024,
+  .right-inner-container-sage2024 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage2024 img {
+    width: 80%;
+    max-width: 90%;
+    padding: 1rem 0 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .what-is-new2024-header {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sage300v2024-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .left-inner-container-sage2024 p {
+    font-size: 0.9rem;
+  }
+
+  .sage300v2024-card {
+    flex-direction: column;
+  }
+
+  .left-inner-container-sage2024,
+  .right-inner-container-sage2024 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage2024 img {
+    width: 80%;
+    max-width: 90%;
+    padding: 2rem 0 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-sage300-keyFeature {
+    max-width: 90%;
+  }
+
+  .sage300v2024-card {
+    flex-direction: row;
+    padding-top: 1.5rem;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .left-container-sage300v2024,
+  .right-container-sage300v2024 {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .left-inner-container-sage2024 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage2024 img {
+    width: 90%;
+  }
+
+  .sage300v2024-card h2 {
+    font-size: 2.1rem;
+  }
+
+  .left-inner-container-sage2024 p {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container-sage300-keyFeature {
+    max-width: 90%;
+  }
+
+  .sage300v2024-card {
+    flex-direction: row;
+    padding-top: 1.5rem;
+    font-size: calc(60% + 0.8vmin);
+  }
+
+  .left-container-sage300v2024,
+  .right-container-sage300v2024 {
+    width: 100%;
+    height: auto;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .left-inner-container-sage2024 {
+    width: 100%;
+  }
+
+  .right-inner-container-sage2024 img {
+    width: 75%;
+    max-width: 90%;
+    padding: 1rem;
+    border-radius: 40px;
+  }
+
+  .sage300v2024-card h2 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+
+  .left-inner-container-sage2024 p {
+    text-align: left;
+    font-size: 0.95rem;
+  }
+}
+
+/* SAGE 300 2024 DESKTOP SCREENS - SECTION */
+.sage2024-desktopScreens {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3em 0;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.sage2024-desktopScreens h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.1em;
+}
+
+.sage2024-desktopScreens h3 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #00a159;
+  line-height: 1.1em;
+}
+
+.sage2024-desktopScreens p {
+  color: #000;
+  font-weight: 500;
+  font-size: 19px;
+  max-width: 850px;
+  line-height: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .sage2024-desktopScreens h2 {
+    font-size: 2rem;
+  }
+
+  #AP-2024 {
+    align-items: flex-start;
+    margin: 1rem 2rem 1rem 2rem;
+  }
+
+  .sage2024-desktopScreens p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sage2024-desktopScreens h2 {
+    font-size: 1.8rem;
+  }
+
+  .sage2024-desktopScreens p {
+    font-size: 14px;
+  }
+}
+
+/* SAGE 300 WEBSCREENS - SECTION */
+.sage2024-webScreens {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.sage2024-webScreens h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.1em;
+}
+
+.sage2024-webScreens h3 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #00a159;
+  line-height: 1.1em;
+}
+
+.sage2024-webScreens p {
+  color: #000;
+  font-weight: 500;
+  font-size: 19px;
+  max-width: 850px;
+  line-height: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .sage2024-webScreens h2 {
+    font-size: 2rem;
+  }
+
+  .sage2024-webScreens p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sage2024-webScreens h2 {
+    font-size: 1.8rem;
+  }
+
+  .sage2024-webScreens p {
+    font-size: 14px;
+  }
+}
+
+/* GLOBAL SEARCH - SECTION */
+.globalSearch-sage2024 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.container-globalSearch-sage2024 {
+  display: flex;
+  align-items: center;
+  gap: 3.125rem;
+  max-width: 80%;
+  justify-content: center;
+}
+
+.sage300-globalSearch-image {
+  max-width: 50%;
+  margin-top: 2rem;
+  border-radius: 0.31rem;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.content-globalSearch h2 {
+  font-size: 2.18rem;
+  font-weight: 800;
+  margin: 0;
+  padding-bottom: 0.7rem;
+}
+
+.content-globalSearch h3 {
+  padding-bottom: 0.2rem;
+}
+
+.content-globalSearch p {
+  margin-top: 0.5rem;
+  line-height: 1.7rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .container-globalSearch-sage2024 {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .content-globalSearch {
+    max-width: 90%;
+  }
+
+  .sage300-globalSearch-image {
+    max-width: 80%;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .container-globalSearch-sage2024 {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    gap: 1rem;
+  }
+
+  .content-globalSearch {
+    max-width: 90%;
+  }
+
+  .sage300-globalSearch-image {
+    max-width: 80%;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .container-globalSearch-sage2024 {
+    max-width: 90%;
+  }
+
+  .sage300-globalSearch-image {
+    max-width: 50%;
+  }
+
+  .content-globalSearch {
+    max-width: 95%;
+  }
+
+  .content-globalSearch h2 {
+    font-size: 2rem;
+  }
+
+  .content-globalSearch h3 {
+    font-size: 1rem;
+  }
+
+  .content-globalSearch p {
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* G/L FINANCIAL REPORTER FOR THE WEB */
+@media (max-width: 600px) {
+  #GL-webscreens {
+    align-items: flex-start;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 0 auto;
+  }
+
+  #GL-financial-reporter {
+    max-width: 100%;
+    flex: 1 1 6.25rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  #GL-webscreens {
+    align-items: flex-start;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 0 auto;
+  }
+
+  #GL-financial-reporter {
+    max-width: 100%;
+    flex: 1 1 6.25rem;
+  }
+
+  #GL-detail {
+    flex: 1 1 15rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #GL-detail {
+    padding-top: 2rem;
+  }
+
+  #GL-webscreens {
+    margin: 0 auto;
+  }
+
+  #GL-image img {
+    margin: 0 auto;
+  }
+}
+
+/* PURCHASE ORDERS - SECTION */
+@media (max-width: 600px) {
+  #PO-2024 {
+    align-items: flex-start;
+    padding: 1rem 2rem 1rem 2rem;
+    margin: 0 auto;
+  }
+
+  #po-webscreens {
+    flex: 1 1 6.25rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  #PO-2024 {
+    gap: 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #PO-2024 {
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .po-listdetail {
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #PO-2024 {
+    margin: 0 auto;
+    gap: 1rem;
+    width: 100%;
+  }
+}
+
+/* Project and Job Costing Webscreens */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  #PJC-2024 {
+    gap: 1rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #PJC-2024 {
+    gap: 1.5rem;
+    margin: 0 auto;
+  }
+
+  .pjc-list-detail {
+    padding-top: 9rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #PJC-2024 {
+    gap: 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* What's New on Youtube - Section */
+#what-is-new-youtube {
+  margin: 0 auto;
+}
+
+#what-is-new-youtube iframe {
+  border-radius: 1rem;
+  width: 35rem;
+  max-width: 100%;
+  height: 20rem;
+}
+
+#what-is-new-youtube button {
+  background-color: #00C300;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.9rem 0.9rem;
+  margin-bottom: 1rem;
+  max-width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#content-youtube {
+  width: 50%;
+  max-width: 100%;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  #what-is-new-youtube iframe {
+    max-width: 100%;
+  }
+
+  #content-youtube {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  #what-is-new-youtube {
+    gap: 1rem;
+  }
+
+  #what-is-new-youtube iframe {
+    max-width: 100%;
+  }
+
+  #content-youtube {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #content-youtube h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #what-is-new-youtube iframe {
+    max-width: 100%;
+  }
+}
+
+/*/////////  SAGE COVER - PAGE /////////*/
+/* SAGE COVER HEADER */
+.sageCover-section {
+  display: flex;
+  align-items: center;
+  padding: 3rem 1rem 3rem 1rem;
+  gap: 1rem;
+  max-width: 70%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sagecover-text h3 {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  padding-bottom: 2rem;
+  color: white;
+  font-style: oblique;
+}
+
+.sagecover-text h2 {
+  font-size: 3.5rem;
+  padding-bottom: 0.5rem;
+  color: #00d639;
+}
+
+.sageCover-head-image {
+  max-width: 30%;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+
+.sagecover-text {
+  flex: 1;
+}
+
+.sagecover-text p {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+}
+
+.sagecover-text button {
+  background-color: #00c853;
+  padding: 0.6rem 1.25rem;
+  width: fit-content;
+  border: none;
+  border-radius: 50px;
+  margin-top: 2rem;
+
+}
+
+@media (max-width: 768px) {
+  .sageCover-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 1rem 3rem 1rem;
+  }
+
+  .sageCover-head-image {
+    max-width: 100%;
+  }
+
+  .sagecover-text h2 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .sageCover-section {
+    padding: 3rem 1rem 3rem 1rem;
+    max-width: 80%;
+  }
+
+  .sagecover-text h2 {
+    font-size: 3rem;
+  }
+
+  .sageCover-head-image {
+    max-width: 35%;
+  }
+}
+
+/* WHAT IS SAGE COVER- SECTION */
+.sageCover-section2 {
+  margin-bottom: 2rem;
+}
+
+.what-is-sageCover h2 {
+  font-size: 2.18rem;
+  font-weight: 800;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 4rem;
+}
+
+.sageCover-contaciner2 {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 4rem;
+  max-width: 65%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sageCover-image {
+  max-width: 25%;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+
+.sagecover-text2 {
+  flex: 1;
+}
+
+.sagecover-text2 p {
+  margin: 0;
+  font-weight: 500;
+  color: #000;
+  padding-bottom: 1rem;
+  line-height: 1.5rem;
+  text-indent: 2rem;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  .sageCover-contaciner2 {
+    flex-direction: column;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  .sageCover-image {
+    max-width: 70%;
+  }
+
+  .sagecover-text2 h2 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .sageCover-contaciner2 {
+    max-width: 90%;
+  }
+
+  .sagecover-text2 h2 {
+    font-size: 3rem;
+  }
+
+  .sageCover-image {
+    max-width: 35%;
+  }
+
+  .sagecover-text2 p {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1700px) {
+  .sageCover-contaciner2 {
+    max-width: 80%;
+  }
+
+  .sagecover-text2 p {
+    text-align: left;
+  }
+}
+
+/* SAGE COVER BENEFITS */
+.servicesPage {
+  font-family: "Inter", sans-serif;
+  margin-bottom: 2rem;
+}
+
+.site-heading h2 {
+  display: inline-block;
+  padding-bottom: 1.25rem;
+  position: relative;
+  text-transform: capitalize;
+  z-index: 1;
+  color: #008d4e;
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.site-heading h2::before {
+  background: #00a159 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 50%;
+  margin-left: -25px;
+  position: absolute;
+  width: 3.125rem;
+}
+
+.site-heading {
+  margin-bottom: 3.75rem;
+  overflow: hidden;
+  margin-top: -5px;
+}
+
+.container-sageCover-benefits {
+  max-width: 90%;
+  padding: 1rem 1rem 3rem 1rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+}
+
+.row-services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.service-card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.68rem;
+  height: 4.68rem;
+  border: 2px solid #00a159;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  color: #00a159;
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+
+.row-services .service-card {
+  padding: 1.5rem 0.93rem;
+  font-size: 0.93rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.container-sageCover-benefits p {
+  text-align: center;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.row-services .service-card:hover {
+  color: white;
+  background-color: #00C300;
+  transform: scale(1.05);
+}
+
+.row-services .service-card:hover i {
+  color: #fff;
+  border: 2px solid white;
+}
+
+.row-services .service-card h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.service-card {
+  padding: 1.87rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 calc(25% - 20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.service-card h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.service-card p {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.row-services .service-card:hover h3,
+.row-services .service-card:hover p {
+  color: #fff;
+}
+
+@media screen and (min-width: 1200px) {
+  .row-services {
+    gap: 2rem;
+    max-width: 90%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .row-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .row-services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .row-services {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.93rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-services {
+    grid-template-columns: 1fr;
+    gap: 0.93rem;
+    max-width: 100%;
+  }
+}
+
+
+/* สิทธิประโยชน์สำหรับสมาชิก */
+.sageCover-section3 {
+  margin-bottom: 2rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.member-benefits-heading h2 {
+  display: block;
+  font-size: 2.3rem;
+  margin-top: 4rem;
+  font-weight: 800;
+  color: #000;
+}
+
+.member-benefits-heading h3 {
+  display: inline-block;
+  padding-bottom: 20px;
+  padding-top: 0.5rem;
+  position: relative;
+  text-transform: capitalize;
+  font-size: 1.75rem;
+  font-weight: 800;
+  z-index: 1;
+  color: #009d30;
+}
+
+.member-benefits-heading h3::before {
+  background: #009d30 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 50%;
+  margin-left: -25px;
+  position: absolute;
+  width: 60px;
+}
+
+.member-benefits-heading {
+  margin-bottom: 10px;
+  overflow: hidden;
+  margin-top: -5px;
+}
+
+.container-spMember-benefits {
+  max-width: 90%;
+  padding: 1rem 1rem 3rem 1rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+}
+
+.row-spMember {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.spBenefits-card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.68rem;
+  height: 4.68rem;
+  border: 3px solid #009d30;
+  border-radius: 20px;
+  font-size: 2.4rem;
+  color: #009d30;
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+
+.row-spMember .spBenefits-card {
+  padding: 1.5rem 0.93rem;
+  font-size: 0.93rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.container-spMember-benefits p {
+  text-align: left;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.row-spMember .spBenefits-card:hover {
+  color: white;
+  background-color: #00C300;
+  transform: scale(1.05);
+}
+
+.row-spMember .spBenefits-card:hover i {
+  color: #fff;
+  border: 2px solid white;
+}
+
+.row-spMember .spBenefits-card h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.spBenefits-card {
+  padding: 1.87rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 calc(25% - 20px);
+  transition: all 0.3s ease-in-out;
+}
+
+.spBenefits-card h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.spBenefits-card p {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.row-spMember .spBenefits-card:hover h3,
+.row-spMember .spBenefits-card:hover p {
+  color: #fff;
+}
+
+@media only screen and (min-width: 1958px) {
+  .row-spMember {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1958px) {
+  .container-spMember-benefits {
+    max-width: 100%;
+  }
+
+  .row-spMember {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 70%;
+    gap: 4rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .row-spMember {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .row-spMember {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .row-spMember {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.93rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-spMember {
+    grid-template-columns: 1fr;
+    gap: 0.93rem;
+    max-width: 100%;
+  }
+}
+
+/*///////// SAGE CRM PAGE //////////*/
+/* SAGE CRM OVERVIEW */
+.sageCRM-introCard h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  text-align: left;
+  max-width: 100%;
+  line-height: 2rem;
+}
+
+.sageCRM-introCard {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  padding-top: 1rem;
+}
+
+#sage-crm-headerVDO {
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#sage-crm-headerVDO iframe {
+  border-radius: 30px;
+  width: 35rem;
+  height: 19.688rem;
+}
+
+#image-serviceCRM-header {
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#image-serviceCRM-header img {
+  border-radius: 30px;
+  width: 50%;
+}
+
+#sageCRM-overview-maincontainer {
+  max-width: 85%;
+}
+
+.sageCrm-overview-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color: #1d252c;
+  border: none;
+  padding: 3rem;
+}
+
+.right-crmHeader-overview {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-inner-container-sageCRM {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .sageCrm-overview-header {
+    padding: 4rem 1rem 3rem 1rem;
+  }
+
+  .right-inner-container-sageCRM img {
+    width: 80%;
+  }
+
+  #sageCRM-overview-maincontainer {
+    max-width: 90%;
+  }
+
+  .sageCRM-introCard {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .sageCrm-overview-header {
+    padding: 3rem 1rem 3rem 1rem;
+  }
+
+  .left-container-sage300,
+  .right-container-sage300 {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+
+  #sageCRM-overview-maincontainer {
+    max-width: 90%;
+  }
+
+  .sageCRM-introCard {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #sageCRM-overview-maincontainer {
+    max-width: 90%;
+  }
+
+  .sageCrm-overview-header {
+    padding: 4rem 3rem 3rem 3rem;
+  }
+
+  .sageCRM-introCard {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #sageCRM-overview-maincontainer {
+    max-width: 80%;
+  }
+
+  .sageCrm-overview-header {
+    padding: 4rem 0 3rem 0;
+  }
+
+  .sageCRM-introCard h2 {
+    font-size: 2.5rem;
+  }
+
+  .sageCRM-introCard {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1800px) {
+  #sageCRM-overview-maincontainer {
+    max-width: 100%;
+  }
+}
+
+/* CRM Unlock success - SECTION */
+.feature-sageCrm-section {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.container-crmFeature {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#row-CRMfeature {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.featureCRM-card {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.featureCRM-card i {
+  font-size: 50px;
+  color: #00a159;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border: 3px solid #00a159;
+  border-radius: 10%;
+  padding: 15px;
+  background-color: transparent;
+  width: 4.3rem;
+  height: 4.3rem;
+}
+
+.material-symbols-outlined {
+  font-size: 3rem;
+  padding: 0 0.6rem 0.5rem 0;
+}
+
+#row-CRMfeature .featureCRM-card {
+  padding: 1.56rem 0.93rem;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.featureCRM-card p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+
+.featureCRM-card h3 {
+  font-size: 1.22rem;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#row-CRMfeature .featureCRM-card:hover {
+  color: white;
+  background-color: #00a159;
+  transform: scale(1.05);
+}
+
+#row-CRMfeature .featureCRM-card i {
+  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  transition: 0.5s;
+}
+
+#row-CRMfeature .featureCRM-card:hover i {
+  color: #fff;
+  border-color: #fff;
+}
+
+
+
+#row-CRMfeature .featureCRM-card:hover h3,
+#row-CRMfeature .featureCRM-card:hover p {
+  color: #fff;
+}
+
+@media screen and (min-width: 1200px) {
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+
+  #crm-unlockSuccess p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .container-crmFeature {
+    max-width: 80%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .featureCRM-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .featureCRM-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #row-CRMfeature {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .featureCRM-card p {
+    font-size: 0.9rem;
+  }
+
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 3rem;
+  }
+}
+
+/* How Sage CRM helping growing businesses today */
+.sageCrm-section3 {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+  background-color: #f2f5f6;
+}
+
+.sageCrm-section3 h2 {
+  font-size: 2.2rem;
+  padding: 4rem 0 1rem 0;
+  font-weight: 800;
+  color: #000;
+  line-height: 2.9rem;
+}
+
+.sageCrm-section3 p {
+  color: #000;
+  font-weight: 500;
+  font-size: 1.25rem;
+  max-width: 53.125rem;
+  line-height: 1.5em;
+}
+
+@media screen and (min-width: 1200px) {
+  .sageCrm-section3 {
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .sageCrm-section3 {
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .sageCrm-section3 {
+    padding: 0 2rem;
+  }
+
+  .sageCrm-section3 h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sageCrm-section3 {
+    padding: 0 2rem;
+  }
+
+  .sageCrm-section3 h2 {
+    font-size: 1.8rem;
+  }
+
+  .sageCrm-section3 p {
+    font-size: 0.8rem;
+  }
+}
+
+/* How Sage CRM helping growing businesses today 2 */
+.crm-helpingGlowing-section {
+  background-color: #f2f5f6;
+}
+
+.crm-helping-text {
+  background-color: #000;
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+}
+
+.crm-helping-text h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #00ff85;
+}
+
+.crm-helping-text p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: white;
+  padding-bottom: 1rem;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.crm-helping-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 4rem;
+  max-width: 65%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  padding: 3rem 0 5rem 0;
+}
+
+#crm-image {
+  max-width: 40%;
+  border-radius: 20px;
+  align-items: flex-start;
+}
+
+.feature-crmList .material-icons {
+  font-size: 2.2rem;
+  color: #00ff85;
+}
+
+.feature-crmList {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-crmList:nth-child(1),
+.feature-crmList:nth-child(2) {
+  margin-bottom: 2rem;
+}
+
+.feature-crmList i {
+  font-size: 1.5rem;
+  color: #00ff85;
+}
+
+.icon-frame {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #00ff85;
+  border-radius: 8px;
+}
+
+.icon-frame .material-icons {
+  font-size: 32px;
+  color: #00ff85;
+}
+
+#crmBenefit-section {
+  margin-bottom: 8rem;
+}
+
+@media (max-width: 768px) {
+  .crm-helping-container {
+    flex-direction: column;
+    text-align: center;
+    max-width: 80%;
+    gap: 2rem;
+  }
+
+  #crm-image {
+    max-width: 80%;
+  }
+
+  .crm-helping-text {
+    text-align: left;
+  }
+
+  .crm-helping-text h2 {
+    font-size: 2.1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .crm-helping-container {
+    max-width: 95%;
+    gap: 2rem;
+  }
+
+  .crm-helping-text h2 {
+    font-size: 2rem;
+  }
+
+  .crm-helping-text p {
+    text-align: left;
+  }
+}
+
+/* How a CRM can help your business deliver an exceptional customer experience */
+.crmBeneits-container {
+  font-family: "Montserrat", sans-serif;
+  max-width: 65%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  color: white;
+}
+
+.crmBeneits-container h2 {
+  text-align: left;
+  padding: 2rem 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.crmBeneits-container p {
+  text-align: left;
+  text-indent: 2rem;
+  padding-bottom: 2rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .crmBeneits-container {
+    max-width: 70%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  .crmBeneits-container {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .crmBeneits-container {
+    max-width: 80%;
+  }
+}
+
+/* How Sage CRM helps your business */
+.crmBeneits3-container {
+  font-family: "Montserrat", sans-serif;
+  max-width: 55%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  color: #000;
+}
+
+.sagecrm-benefits3 h2 {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+
+.crmBeneits3-container p {
+  text-align: center;
+  text-indent: 2rem;
+  padding-bottom: 2rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .crmBeneits3-container {
+    max-width: 70%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+  .crmBeneits3-container {
+    max-width: 80%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .crmBeneits3-container {
+    max-width: 80%;
+  }
+}
+
+/**/
+.crmBenefits-section4 {
+  margin-bottom: 3rem;
+}
+
+.crmBenefits4-text h2 {
+  text-align: left;
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.what-is-sageCover h2 {
+  font-size: 2.18rem;
+  font-weight: 800;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 4rem;
+}
+
+.crmBenefits4-contaciner {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 4rem;
+  max-width: 65%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+.crmBenefits4-image {
+  max-width: 50%;
+  border-radius: 20px;
+  border: 1px solid #c9c9c9;
+  align-items: flex-start;
+  box-shadow: 0 2.18rem 5rem rgba(0, 0, 0, 0.15);
+}
+
+.crmBenefits4-text {
+  flex: 1;
+}
+
+.crmBenefits4-text p {
+  margin: 0;
+  font-weight: 500;
+  color: #000;
+  padding-bottom: 1rem;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.crmBenefits-section5 {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .crmBenefits4-contaciner {
+    flex-direction: column;
+    text-align: center;
+    max-width: 80%;
+    gap: 2rem;
+  }
+
+  .crmBenefits4-image {
+    max-width: 90%;
+  }
+
+  .crmBenefits4-text h2 {
+    font-size: 2.1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .crmBenefits4-contaciner {
+    max-width: 85%;
+    gap: 2rem;
+  }
+
+  .crmBenefits4-text h2 {
+    font-size: 2rem;
+  }
+
+  .crmBenefits4-text p {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1700px) {
+  .crmBenefits4-contaciner {
+    max-width: 80%;
+  }
+
+  .crmBenefits4-text p {
+    text-align: left;
+  }
+}
+
+#crmBenefit-section {
+  margin-bottom: 8rem;
+}
+
+/* WHAT'S NEW IN SAGE CRM 2024*/
+.crmBenefits4-list {
+  padding-left: 2rem;
+}
+
+.crmBenefits4-list li {
+  padding-bottom: 1rem;
+  font-weight: 500;
+}
+
+.whats-new-crm-1 p {
+  font-size: 0.9rem;
+  color: #333;
+  font-style: oblique;
+}
+
+.whats-new-crm-note p {
+  padding: 1rem 0;
+  font-size: 1rem;
+}
+
+/* Get more from every customer relationship - Section */
+.crm-keys {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.crm-keys h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 1.1em;
+  padding: 3rem 0 2rem 0;
+}
+
+.crm-keys2 {
+  font-family: "Montserrat", sans-serif;
+  padding-bottom: 3rem;
+}
+
+.crmKey-container {
+  width: 100%;
+  padding: 0 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.crmKeys-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.crmKeys-card i {
+  font-size: 50px;
+  color: #00a159;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border: 2px solid #00a159;
+  border-radius: 10%;
+  padding: 15px;
+  background-color: transparent;
+  width: 4.375rem;
+  height: 4.375rem;
+}
+
+.crmKeys-row .crmKeys-card {
+  padding: 1.5rem 0.93rem;
+  font-size: 0.93rem;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.crmKeys-row .crmKeys-card:hover {
+  color: white;
+  background-color: #00a159;
+  transform: scale(1.05);
+}
+
+.crmKeys-row .crmKeys-card i {
+  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  transition: 0.5s;
+}
+
+.crmKeys-row .crmKeys-card:hover i {
+  color: #fff;
+  border-color: #fff;
+}
+
+.crmKeys-card {
+  padding: 1.87rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.crmKeys-card h3 {
+  font-size: 1.25rem;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.crmKeys-card p {
+  font-size: 0.8rem;
+  color: #333;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  padding-top: 0.5rem;
+}
+
+.crmKeys-row .crmKeys-card:hover h3,
+.crmKeys-row .crmKeys-card:hover p {
+  color: #fff;
+}
+
+@media (max-width: 1200px) {
+  .crmKeys-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .crmKeys-card {
+    max-width: 400px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .crmKeys-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 85%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .crmKeys-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 85%;
+  }
+
+  .crm-keys h2 {
+    font-size: 2.4rem;
+    padding: 1rem;
+  }
+
+  .crmKeys-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .crmKeys-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .crm-keys h2 {
+    font-size: 2.4rem;
+    padding: 1rem;
+  }
+
+}
+
+/*////// SAGE CRM SERVICE PAGE ///////*/
+
+/* SERVICE CRM OVERVIEW */
+#sageCRM-feature-maincontainer {
+  max-width: 70%;
+}
+
+#serviceCRM-header {
+  width: 100%;
+}
+
+.right-crmHeader {
+  display: flex;
+  flex: 1;
+  height: 28.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-inner-container-sageCRM {
+  text-align: center;
+}
+
+/**/
+#sage-crm-headerImg img {
+  width: 50%;
+  max-width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/**/
+
+/* SERVICE CRM - HEADER SECTION */
+#feature-headerpage {
+  background-color: #1d252c;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.service-crm-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.content-serviceCRM-header {
+  flex: 1;
+}
+
+.content-serviceCRM-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 20px;
+}
+
+.header-highlight {
+  color: #00C300;
+}
+
+.content-serviceCRM-header p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+.illustration-header {
+  flex: 1;
+  text-align: center;
+}
+
+.illustration-header img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .service-crm-section {
+    max-width: 80%;
+    padding: 4rem 1rem 3rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .service-crm-section {
+    max-width: 80%;
+    padding: 4rem 1rem 3rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1310px) {
+  .service-crm-section {
+    max-width: 85%;
+  }
+}
+
+/* Your customers are the lifeblood - SECTION */
+.serviceCRM-section2 {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 4rem 0;
+  text-align: left;
+  max-width: 75%;
+}
+
+.serviceCRM-section2 h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+  max-width: 75%;
+}
+
+.serviceCRM-section2 p {
+  color: #000;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5em;
+  max-width: 75%;
+  padding-bottom: 3rem;
+}
+
+.serviceCRM-section2 img {
+  max-width: 70%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+  .serviceCRM-section2 h2 {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .serviceCRM-section2 {
+    max-width: 100%;
+  }
+}
+
+/* World-class experience from The Signature Works - Section */
+#serviceCRM-WorldClass-section {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.serviceCRM-WorldClass {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.serviceCRM-WorldClass h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.serviceCRM-WorldClass p {
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5em;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1300px) {
+  #serviceCRM-WorldClass-section {
+    max-width: 70%;
+  }
+
+  .serviceCRM-WorldClass h3 {
+    line-height: 2rem;
+  }
+}
+
+/* What exceptional customer service means for you */
+.serviceCRM-exceptional-customer-section {
+  max-width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.serviceCRM-exceptional {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.serviceCRM-exceptional h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.serviceCRM-exceptional p {
+  color: #333;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.serviceCRM-exceptional ul {
+  padding: 1rem 2rem 2rem 2rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.serviceCRM-exceptional img {
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1300px) {
+  .serviceCRM-exceptional-customer-section {
+    max-width: 70%;
+  }
+
+  .serviceCRM-exceptional h3 {
+    line-height: 2rem;
+  }
+}
+
+/* SERVICE CRM - BARS */
+.serviceCRM-bars {
+  background-color: #f2f5f6;
+  padding: 2rem 0;
+}
+
+.serviceCRM-tabs {
+  max-width: 60%;
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 3px solid #ddd;
+  color: #000;
+}
+
+.tab-header button {
+  border-radius: 1px;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-weight: 700;
+}
+
+.tab-link {
+  font-size: 1rem;
+  flex: 1;
+  padding: 0.6rem 0.5rem;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #888787;
+  font-weight: 700;
+  margin: 0 auto;
+}
+
+.tab-link.active {
+  border-bottom: 3px solid #00C300;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  font-weight: 800;
+}
+
+.tab-link:hover {
+  background-color: #e2e2e2;
+  color: #000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.tab-content {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.tab-panel {
+  display: none;
+  padding: 2rem 3rem;
+}
+
+.tab-panel ul {
+  padding: 1rem 2rem;
+  line-height: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tab-panel h2 {
+  font-size: 1rem;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .serviceCRM-tabs {
+    max-width: 85%;
+  }
+
+  .tab-link {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .tab-panel h2 {
+    font-size: 0.9rem;
+  }
+
+  .tab-panel ul {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .serviceCRM-tabs {
+    max-width: 85%;
+  }
+
+  .tab-link {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .tab-panel h2 {
+    font-size: 0.9rem;
+  }
+
+  .tab-panel ul {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+  .serviceCRM-tabs {
+    max-width: 75%;
+  }
+
+  .tab-link {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .tab-panel h2 {
+    font-size: 0.9rem;
+  }
+
+  .tab-panel ul {
+    font-size: 0.8rem;
+  }
+}
+
+/*///////// SALES CRM PAGE ///////////*/
+/* SALES CRM OVERVIEW */
+.empower-section {
+  max-width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.salesCRM-empower-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 4rem 0 2rem 0;
+}
+
+.salesCRM-empower-container h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.salesCRM-empower-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.2rem;
+}
+
+.salesCRM-empower-container img {
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1300px) {
+  .empower-section {
+    max-width: 70%;
+  }
+
+  .salesCRM-empower-container h2 {
+    line-height: 1.9rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Put your business on the path to exceptional growth */
+.salesCRM-growth-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 4rem 0 2rem 0;
+}
+
+.salesCRM-growth-container h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.salesCRM-growth-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.salesCRM-growth-container ul {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  padding: 2rem;
+}
+
+.salesCRM-growth-container img {
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1300px) {
+  .salesCRM-growth-container h2 {
+    line-height: 1.9rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Discover the secret behind Gibson Teldata's success */
+.salesCRM-discover-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 4rem 0 2rem 0;
+}
+
+.salesCRM-discover-container h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.salesCRM-discover-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.2rem;
+}
+
+@media (max-width: 1300px) {
+  .salesCRM-discover-container h2 {
+    line-height: 1.9rem;
+    line-height: 2.5rem;
+  }
+}
+
+/* Get the most from your marketing spend */
+.RockendSoftware-section {
+  max-width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1300px) {
+  .RockendSoftware-section {
+    max-width: 70%;
+  }
+}
+
+#crm-feature-width {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.mkt-investment-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 2rem 0 2rem 0;
+}
+
+.mkt-investment-container h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.mkt-investment-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.2rem;
+}
+
+.mkt-investment-container ul {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+  padding: 0 2rem;
+}
+
+.image-emailMarketing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.image-emailMarketing img {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+  .mkt-investment-container h3 {
+    line-height: 1.9rem;
+  }
+
+  .image-emailMarketing {
+    max-width: 60%;
+  }
+}
+
+/*///////// SAGE CRM INTEGRATED PAGE ///////////*/
+#crm-h2-width {
+  max-width: 60%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 1300px) {
+  #crm-h2-width {
+    max-width: 70%;
+  }
+}
+
+#crm-h2-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 4rem 0 2rem 0;
+}
+
+#crm-h2-container h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+#crm-h2-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+#crm-h2-container ul {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  padding: 2rem;
+}
+
+#crm-h2-container img {
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);*/
+}
+
+.outperform-section {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 1300px) {
+  #crm-h2-container h2 {
+    line-height: 1.9rem;
+    line-height: 2.5rem;
+  }
+}
+
+#crm-h3-container {
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 2rem 0 0 0;
+}
+
+#crm-h3-container h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #000;
+  line-height: 3rem;
+  text-align: left;
+}
+
+#crm-h3-container p {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1.2rem;
+}
+
+#crm-h3-container ul {
+  color: #000;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.7rem;
+  padding: 0 2rem;
+}
+
+/*////// SAGE 300 TECH PARTNER PAGE //////////*/
+/* TECH PARTNER HEADER TEMPLATE */
+#secondary-navbar {
+  max-width: 90%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#partner-brand img {
+  max-width: 30%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#norming-brand img {
+  max-width: 40%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#peresoft-brand img {
+  max-width: 50%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#pacifictech-brand img {
+  max-width: 70%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#sub-nav-btn {
+  max-width: fit-content;
+}
+
+.sub-menu-button a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+
+}
+
+.sub-menu-button button {
+  background-color: #379aff;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.sub-menu-button a:hover {
+  color: #379aff;
+  text-decoration: none;
+}
+
+.sub-menu-button button:hover {
+  cursor: pointer;
+  border: 2px solid #379aff;
+  background: transparent;
+  color: #014e9c;
+}
+
+/* PEERESOFT MORE INFO BUTTON */
+.sub-menu-peresoft-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.sub-menu-peresoft-btn button {
+  background-color: #e94416;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.sub-menu-peresoft-btn a:hover {
+  color: #e94416;
+  text-decoration: none;
+}
+
+.sub-menu-peresoft-btn button:hover {
+  cursor: pointer;
+  border: 2px solid #e94416;
+  background: transparent;
+  color: #e94416;
+}
+
+/* PACIFICTECH MORE INFO BUTTON */
+.sub-menu-pacifictech-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.sub-menu-pacifictech-btn button {
+  background-color: #002341;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.sub-menu-pacifictech-btn a:hover {
+  color: #002341;
+  text-decoration: none;
+}
+
+.sub-menu-pacifictech-btn button:hover {
+  cursor: pointer;
+  border: 2px solid #002341;
+  background: transparent;
+  color: #002341;
+}
+
+/* DRAYCIR MORE INFO BUTTON */
+
+.draycir-more-btn a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.9rem;
+
+}
+
+.draycir-more-btn button {
+  background-color: #ff633e;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.draycir-more-btn a:hover {
+  color: #ff633e;
+  text-decoration: none;
+}
+
+.draycir-more-btn button:hover {
+  cursor: pointer;
+  border: 2px solid #ff633e;
+  background: transparent;
+  color: #d1350e;
+}
+
+
+/* NORMING SUB-NAV BAR */
+#norming-submenu a {
+  color: #0077b5;
+}
+
+#norming-submenu a.current-page::after {
+  background-color: #379aff;
+}
+
+#norming-submenu a:hover {
+  color: #379aff;
+}
+
+.video-header-container img {
+  max-width: 100%;
+  border: none;
+}
+
+#norming-submenu li a.current-page {
+  color: #379aff;
+}
+
+@media (max-width: 600px) {
+  #secondary-navbar {
+    padding: 2rem 0 0 0;
+  }
+
+  #partner-brand img {
+    max-width: 45%;
+    padding-top: 0;
+  }
+
+  #norming-brand img {
+    max-width: 45%;
+    padding-top: 0;
+  }
+
+  #peresoft-brand img {
+    max-width: 50%;
+    padding-top: 0;
+  }
+
+  #pacifictech-brand img {
+    max-width: 80%;
+    padding-top: 0;
+
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  #secondary-navbar {
+    padding: 1.5rem 0 0 0;
+  }
+
+  #partner-brand img {
+    max-width: 35%;
+    padding-top: 0;
+  }
+
+  #norming-brand img {
+    max-width: 35%;
+    padding-top: 0;
+  }
+
+  #pacifictech-brand img {
+    max-width: 70%;
+  }
+
+  #sub-nav-btn {
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  #secondary-navbar {
+    padding: 2rem 0 0.4rem 0;
+  }
+
+  #partner-brand img {
+    max-width: 30%;
+    padding-top: 0;
+  }
+
+  #norming-brand img {
+    max-width: 30%;
+    padding-top: 0;
+  }
+
+  #pacifictech-brand img {
+    max-width: 80%;
+  }
+
+  #sub-nav-btn {
+    margin-right: 0;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+  #secondary-navbar {
+    padding: 1rem 0;
+  }
+
+  #partner-brand img {
+    max-width: 25%;
+    padding-top: 0;
+  }
+
+  #norming-brand img {
+    max-width: 25%;
+    padding-top: 0;
+  }
+
+  #peresoft-brand img {
+    max-width: 60%;
+    padding-top: 0;
+  }
+
+  #pacifictech-brand img {
+    max-width: 70%;
+    padding-top: 0;
+  }
+
+  #sub-nav-btn {
+    margin-right: 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #secondary-navbar {
+    padding: 1.5rem 0 1rem 0;
+    max-width: 80%;
+  }
+
+  #partner-brand img {
+    max-width: 25%;
+    padding-top: 0;
+  }
+
+  #sub-nav-btn {
+    margin-right: 0;
+    font-size: 1rem;
+  }
+}
+
+/*//////////*/
+.tech-partner-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0 3rem 0;
+}
+
+#tech-partner-header-containerID {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 78%;
+  margin: 0 auto;
+  gap: 1.5rem;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.tech-partner-text-content {
+  flex: 1 1 400px;
+  color: white;
+}
+
+.tech-partner-btn {
+  background-color: #cb040a;
+  font-weight: 500;
+  width: fit-content;
+  margin-top: 2rem;
+}
+
+.tech-partner-btn a {
+  color: white;
+  text-decoration: none;
+}
+
+.tech-partner-text-content h1 {
+  font-size: 3rem;
+  color: white;
+  margin: 0;
+  font-weight: bold;
+}
+
+.tech-partner-text-content h1:nth-child(2) {
+  padding-bottom: 1rem;
+  font-size: 2.8rem;
+}
+
+.tech-partner-text-content p {
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  margin: 10px 0 0;
+}
+
+.video-header-container {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-header-container iframe {
+  width: 100%;
+  max-width: 35rem;
+  height: 19.688rem;
+  border: none;
+  border-radius: 20px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1475px) {
+
+  .tech-partner-text-content h1,
+  .tech-partner-text-content h1:nth-child(2) {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #tech-partner-header-containerID {
+    max-width: 85%;
+  }
+
+  .tech-partner-text-content h1,
+  .tech-partner-text-content h1:nth-child(2) {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #tech-partner-header-containerID {
+    max-width: 85%;
+  }
+
+  .tech-partner-header {
+    padding: 5rem 0 3rem 0;
+  }
+
+  .video-header-container iframe {
+    max-width: 35rem;
+    width: 100%;
+
+  }
+}
+
+@media (max-width: 768px) {
+  #tech-partner-header-containerID {
+    max-width: 90%;
+  }
+
+  .tech-partner-text-content h1,
+  .tech-partner-text-content h1:nth-child(2) {
+    font-size: 2.5rem;
+  }
+
+  .video-header-container {
+    flex: 1 1 500px;
+  }
+
+  .video-header-container iframe {
+    max-width: 100%;
+    height: 18rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-partner-header {
+    padding: 5rem 0 3rem 0;
+  }
+
+  #tech-partner-header-containerID {
+    flex-direction: column;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .tech-partner-text-content {
+    flex: 1 1 300px;
+  }
+
+  .tech-partner-text-content h1,
+  .tech-partner-text-content h1:nth-child(2) {
+    font-size: 2.1rem;
+  }
+
+  .tech-partner-text-content p {
+    font-size: 0.9rem;
+  }
+
+  .video-header-container {
+    flex: 1 1 150px;
+  }
+}
+
+
+/* TECHNISOFT PAGE */
+.technisoft-intro-section {
+  display: flex;
+  padding: 5rem 0 3rem 0;
+}
+
+.technisoft-intro-container {
+  max-width: 78%;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.technisoft-intro-container h2 {
+  font-family: "Inter", sans-serif;
+  color: #1d4f89;
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.technisoft-intro-container p {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+  padding-bottom: 1rem;
+  text-indent: 2rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .technisoft-intro-container {
+    max-width: 90%;
+    text-align: left;
+  }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .technisoft-intro-container {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .technisoft-intro-container {
+    max-width: 85%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .technisoft-intro-container {
+    max-width: 78%;
+  }
+}
+
+/* Key features of Service Manager */
+#service-manager-feature {
+  margin-bottom: 5rem;
+}
+
+#service-manager-feature-container {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  max-width: 80%;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+}
+
+.keyFeature-text h2 {
+  text-align: left;
+  padding: 1rem 0 2rem 0;
+  color: #1d4f89;
+  font-size: 2rem;
+}
+
+.keyFeature-text {
+  flex: 1;
+}
+
+.keyFeature-text ul {
+  padding-left: 2rem;
+}
+
+.keyFeature-text ul li {
+  margin: 0;
+  color: #333;
+  font-size: 0.9rem;
+  padding-bottom: 1rem;
+  text-align: left;
+}
+
+.keyFeature-text p {
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5rem;
+}
+
+.keyFeature-text a {
+  color: #004080;
+}
+
+.feature-image-container {
+  max-width: 50%;
+  align-items: flex-start;
+}
+
+.technisoft-image-container2 {
+  max-width: 50%;
+  align-items: flex-start;
+  border-radius: 30px;
+  box-shadow: 0 0.87rem 1.75rem rgba(0, 0, 0, 0.25), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.22);
+}
+
+.one-for-all-solution-section {
+  background-color: #f2f5f6;
+  padding: 1.5rem 0;
+}
+
+#service-manager-feature2 {
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  #service-manager-feature-container {
+    flex-direction: column;
+    text-align: left;
+    max-width: 80%;
+    gap: 2rem;
+  }
+
+  .keyFeature-text h2 {
+    font-size: 2.1rem;
+  }
+
+  .feature-image-container {
+    max-width: 70%;
+  }
+
+  .technisoft-image-container2 {
+    max-width: 95%;
+  }
+
+  .keyFeature-text ul {
+    padding-left: 2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  #service-manager-feature-container {
+    flex-direction: column;
+    text-align: left;
+    max-width: 80%;
+    gap: 2rem;
+  }
+
+  .keyFeature-text h2 {
+    font-size: 2.1rem;
+  }
+
+  .feature-image-container {
+    max-width: 60%;
+  }
+
+  .technisoft-image-container2 {
+    max-width: 95%;
+  }
+
+  .keyFeature-text ul {
+    padding-left: 2rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #service-manager-feature-container {
+    max-width: 85%;
+    gap: 2rem;
+  }
+
+  .keyFeature-text h2 {
+    font-size: 2rem;
+  }
+
+  .keyFeature-text ul li {
+    padding-bottom: 0.5rem;
+  }
+
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1700px) {
+  #service-manager-feature-container {
+    max-width: 80%;
+  }
+
+}
+
+/* TECHNISOFT OTHER FEATURES */
+.technisoft-software-h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-align: center;
+  color: #01528a;
+  margin-bottom: 2rem;
+}
+
+.technisoft-all-feature {
+  margin-bottom: 2em;
+}
+
+.technisoft-all-feature-container {
+  max-width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.row-feature-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.technisoft-feature-card img {
+  max-height: 4rem;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: 0.5s;
+}
+
+.row-feature-container .technisoft-feature-card {
+  padding: 25px 15px;
+  font-size: 15px;
+  border-radius: 5px;
+  text-align: start;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.row-feature-container .technisoft-feature-card a {
+  text-decoration: none;
+  color: #4d4d4d;
+}
+
+.container-services-page p {
+  text-align: center;
+  padding: 1em;
+}
+
+.row-feature-container .technisoft-feature-card:hover {
+  transform: scale(1.05);
+}
+
+.technisoft-feature-card {
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 18.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.technisoft-feature-card h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.3rem;
+  color: #01528a;
+  padding-bottom: 0.8rem;
+}
+
+.technisoft-feature-card p {
+  font-size: 0.85rem;
+  color: #4d4d4d;
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px) {
+  .row-feature-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .row-feature-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .technisoft-feature-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .row-feature-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .row-feature-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .technisoft-feature-card {
+    max-width: fit-content;
+  }
+}
+
+@media (max-width: 600px) {
+  .row-feature-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .technisoft-software-h2 {
+    margin-bottom: 0;
+  }
+}
+
+/* NORMING ASSET MAGEMENT PAGE */
+#norming-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#norming-image-container img {
+  max-width: 55%;
+  border-radius: 10px;
+  box-shadow: 0 0.87rem 1.75rem rgba(0, 0, 0, 0.25), 0 0.6rem 0.6rem rgba(0, 0, 0, 0.22);
+}
+
+#tech-partner-feature-card img {
+  max-height: 4rem;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.norming-feature-section {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0 auto;
+  padding: 4rem 0 0 0;
+  text-align: left;
+  max-width: 75%;
+}
+
+.norming-feature-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.1rem;
+  font-weight: 800;
+  color: #1d4f89;
+  text-align: left;
+}
+
+.norming-feature-section p {
+  color: #000;
+  font-size: 0.9rem;
+  line-height: 1.5em;
+  text-indent: 2rem;
+  padding-bottom: 1rem;
+}
+
+.norming-feature-section ul {
+  padding: 0 5rem;
+  list-style: none;
+}
+
+.norming-feature-section ul li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.norming-feature-section ul li::before {
+  content: "\2713";
+  color: #007bff;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.norming-feature-section li {
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.norming-feature-section img {
+  max-width: 70%;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+  .norming-feature-section h2 {
+    font-size: 2.1rem;
+  }
+
+}
+
+@media (max-width: 1300px) {
+  .norming-feature-section {
+    max-width: 90%;
+  }
+}
+
+/* Asset Acquisition */
+.asset-accounting-acquisition-section {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+#asset-acc-container {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+#asset-acc-container h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  font-weight: 800;
+  color: #1d4f89;
+  line-height: 3rem;
+  text-align: left;
+}
+
+#asset-acc-container p {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+#asset-acc-container img {
+  max-width: 70%;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1300px) {
+  .asset-accounting-acquisition-section {
+    max-width: 70%;
+  }
+
+  #asset-acc-container h3 {
+    line-height: 2rem;
+  }
+}
+
+/*PERESOFT PAGE*/
+#peresoft-submenu a {
+  color: #003366;
+}
+
+#peresoft-submenu a.current-page::after {
+  background-color: #ff6c6c;
+}
+
+#peresoft-submenu a:hover {
+  color: #ff6c6c;
+}
+
+#peresoft-submenu li a.current-page {
+  color: #003366;
+}
+
+#peresoft-submenu li a.current-page:hover {
+  color: #ff6c6c;
+}
+
+/************* Peresoft Other Products*****************/
+.peresoft-otherProducts .container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.peresoft-otherProducts h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #003366;
+  padding: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.peresoft-otherProducts h3 {
+  color: #262626;
+  font-size: 1rem;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.peresoft-otherProducts p {
+  font-size: 0.5rem;
+  font-weight: 400;
+  line-height: 20px;
+  color: #666666;
+  font-family: "Montserrat", sans-serif;
+
+  &.small {
+    font-size: 0.6rem;
+  }
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background-color: #197ee4;
+  border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}
+
+.peresoft-otherProducts .card1 {
+  display: block;
+  position: relative;
+  max-width: 315px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #197ee4;
+    height: 45px;
+    width: 45px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(21);
+  }
+}
+
+.peresoft-otherProducts .card1:hover {
+  p {
+    transition: all 0.3s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  h3 {
+    transition: all 0.3s ease-out;
+    color: #ffffff;
+  }
+}
+
+.peresoft-otherProducts .card2 {
+  display: block;
+  position: relative;
+  max-width: 315px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #197ee4;
+    height: 45px;
+    width: 45px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(21);
+  }
+}
+
+.peresoft-otherProducts .card2:hover {
+  p {
+    transition: all 0.3s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  h3 {
+    transition: all 0.3s ease-out;
+    color: #ffffff;
+  }
+}
+
+/*////// card3//////*/
+.peresoft-otherProducts .card3 {
+  display: block;
+  position: relative;
+  max-width: 315px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: #197ee4;
+    height: 45px;
+    width: 45px;
+    border-radius: 32px;
+    transform: scale(1);
+    transform-origin: 50% 50%;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover:before {
+    transform: scale(21);
+  }
+}
+
+.peresoft-otherProducts .card3:hover {
+  p {
+    transition: all 0.3s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  h3 {
+    transition: all 0.3s ease-out;
+    color: #ffffff;
+  }
+}
+
+/* RecXpress Page */
+.defaultTemplate-container ul li {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+.defaultTemplate-container ul {
+  padding: 0.8rem 1.5rem 1rem;
+}
+
+.APandAR-container ul li {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+.APandAR-container ul {
+  padding: 0.8rem 1.5rem 1rem;
+}
+
+.displayMatchEntry-container ul li {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+.displayMatchEntry-container ul {
+  padding: 0.8rem 1.5rem 1rem;
+}
+
+#RecXpressFeature {
+  padding: 0.8rem 1.5rem 1rem;
+}
+
+#RecXpressFeature li {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+/* EFT Page */
+.eft-bankSetup {
+  padding: 0 1.5rem 1rem;
+}
+
+.eft-bankSetup li {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+/*** PACIFICTECH PAGE **/
+#norming-submenu a {
+  color: #005c90;
+}
+
+#norming-submenu a.current-page::after {
+  background-color: #09b1cd;
+}
+
+#norming-submenu a:hover {
+  color: #09b1cd;
+}
+
+#norming-submenu li a.current-page {
+  color: #005c90;
+}
+
+#row-CRMfeature {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.featurePacifictech-card {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 10px;
+  text-align: center;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+#pacifictech-product-card p {
+  font-size: 0.8rem;
+}
+
+.featurePacifictech-card i {
+  font-size: 50px;
+  color: #003366;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border: 3px solid #003366;
+  border-radius: 10%;
+  padding: 15px;
+  background-color: transparent;
+  width: 4.3rem;
+  height: 4.3rem;
+}
+
+.material-symbols-outlined {
+  font-size: 3rem;
+  padding: 0 0.6rem 0.5rem 0;
+}
+
+#row-CRMfeature .featurePacifictech-card {
+  padding: 1.56rem 0.93rem;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.featurePacifictech-card p {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+
+.featurePacifictech-card h3 {
+  font-size: 1.22rem;
+  color: #000;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#row-CRMfeature .featurePacifictech-card:hover {
+  transform: scale(1.05);
+}
+
+#row-CRMfeature .featurePacifictech-card i {
+  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  transition: 0.5s;
+}
+
+
+@media screen and (min-width: 1200px) {
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+
+  #crm-unlockSuccess p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .container-crmFeature {
+    max-width: 80%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .featurePacifictech-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #row-CRMfeature {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .featurePacifictech-card p {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #row-CRMfeature {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .featurePacifictech-card p {
+    font-size: 0.9rem;
+  }
+
+  #crm-unlockSuccess {
+    max-width: 90%;
+    margin: 0 auto;
+    padding-top: 3rem;
+  }
+}
+
+.pacifictech-more {
+  background-color: #00d639;
+  color: #333;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  max-width: fit-content;
+  margin-right: 18em;
+  font-family: "Anuphan", sans-serif;
+}
+
+.pacifictech-more:hover {
+  background-color: #e67e22;
+}
+
+/* AutoSimply Page */
+#AutoSimply-brand {
+  max-width: 30%;
+}
+
+#AutoSimply-brand img {
+  max-width: 20%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#peresoft-submenu a {
+  color: #003366;
+}
+
+#peresoft-submenu a.current-page::after {
+  background-color: #3f78b3;
+}
+
+#peresoft-submenu a:hover {
+  color: #3f78b3;
+}
+
+#peresoft-submenu li a.current-page {
+  color: #003366;
+}
+
+#peresoft-submenu li a.current-page:hover {
+  color: #3f78b3;
+}
+
+#AutoSimply-overview img {
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.autosimply-feature-section {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.autosimply-feature-section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.1rem;
+  font-weight: 800;
+  color: #1d4f89;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+}
+
+.autosimply-feature-section img {
+  max-width: 50%;
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.autosimply-feature-section p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+#barcode-PO-container {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+#barcode-PO-container ul {
+  padding-left: 4rem;
+}
+
+#barcode-PO-container ul li {
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+#barcode-PO-container h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  font-weight: 800;
+  color: #1d4f89;
+  line-height: 3rem;
+  text-align: left;
+}
+
+#barcode-PO-container p {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+/* AutoSimply Sage 300 Manufacturing */
+#autoSimply-Manfacturing-table h1 {
+  font-size: 2.2rem;
+  font-family: "Inter", sans-serif;
+  color: #000068;
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+
+.row-Features-Manufacturing-table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.item-card i {
+  color: #007bff;
+  margin-bottom: 15px;
+  transition: 0.5s;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  padding: 15px;
+  background-color: transparent;
+  width: 75px;
+  height: 75px
+}
+
+.row-Features-Manufacturing-table .item-card {
+  font-size: 0.9rem;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+.row-Features-Manufacturing-table .item-card:hover {
+  transform: scale(1.05);
+}
+
+.row-Features-Manufacturing-table .item-card i {
+  margin-bottom: 20px;
+  font-size: 2.1rem;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+  .row-Features-Manufacturing-table {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .row-Features-Manufacturing-table {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+}
+
+.item-card {
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px;
+  flex: 1 1 calc(25% - 20px);
+  max-width: 300px;
+  transition: all 0.3s ease-in-out;
+}
+
+.item-card h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  color: #003366;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.ePurchase-h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: #010065;
+}
+
+.why-ePurchase-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.why-ePurchase-img {
+  display: flex;
+  flex: 1 50%;
+}
+
+.why-ePurchase-img img {
+  max-width: 70%;
+  object-fit: contain;
+}
+
+.why-ePurchase-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 50%;
+  vertical-align: middle;
+}
+
+.why-ePurchase-text p {
+  font-family: "Anuphan", sans-serif;
+  line-height: 1.5;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .why-ePurchase-container {
+    max-width: 80%;
+    gap: 1.5rem;
+  }
+
+  .why-ePurchase-text p {
+    font-size: 1.2rem;
+  }
+
+  .ePurchase-h2 {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .why-ePurchase-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .ePurchaseWorkflow-Headercontainer {
+    max-width: 85%;
+  }
+
+  .why-ePurchase-img {
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .why-ePurchase-img img {
+    max-width: 60%;
+  }
+
+  .why-ePurchase-text {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .why-ePurchase-text p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .ePurchase-h2 {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* Production Planing */
+.production-planing-container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.production-planing-container h2 {
+  font-size: 2.1rem;
+  margin-bottom: 1.1rem;
+  font-weight: 800;
+  color: #1d4f89;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+}
+
+.production-planing-container img {
+  max-width: 20%;
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.production-planing-container p {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* DRAYCIR PAGE */
+#AutoSimply-brand {
+  max-width: 40%;
+}
+
+#AutoSimply-brand img {
+  max-width: 32%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+#Draycir-overview p {
+  text-align: center;
+}
+
+.draycir-SDD-container {
+  display: flex;
+  max-width: 80%;
+  justify-content: center;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  gap: 3rem;
+}
+
+.draycir-SDD-text {
+  max-width: 40%;
+}
+
+.draycir-SDD-image {
+  max-width: 40%;
+}
+
+.draycir-SDD-text h2 {
+  font-size: 2rem;
+  color: #161a69;
+}
+
+.draycir-SDD-text img {
+  max-width: 45%;
+  padding-bottom: 1rem;
+}
+
+.draycir-SDD-text p {
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.draycir-SDD-image img {
+  max-width: 70%;
+}
+
+.draycir-SDD-key-benefits {
+  max-width: 80%;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  padding-bottom: 3rem;
+}
+
+.draycir-SDD-key-benefits h2 {
+  text-align: center;
+  padding: 2rem 0;
+  color: #161a69;
+  font-size: 1.7rem;
+}
+
+.key-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.draycir-benefits-cards h4 {
+  color: #003366;
+  padding-bottom: 0.5rem;
+}
+
+.draycir-benefits-cards p {
+  color: #333;
+  font-size: 0.85rem;
+}
+
+.why-draycir-container {
+  max-width: 80%;
+  margin: 0 auto;
+  ;
+  padding: 3rem 0;
+}
+
+.why-draycir-container h1 {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 2rem 0;
+  color: #004080;
+}
+
+.why-draycir-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-family: "Inter", sans-serif;
+  gap: 2rem;
+}
+
+.why-draycir-text {
+  text-align: center;
+  padding: 20px;
+}
+
+.icon-top {
+  font-size: 2.2rem;
+  color: #0073aa;
+  margin-bottom: 10px;
+}
+
+.why-draycir-text h4 {
+  color: #004080;
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.why-draycir-text p {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding-bottom: 1rem;
+}
+
+.why-draycir-text a {
+  color: #007BFF;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.why-draycir-text h4 i {
+  margin-right: 8px;
+  color: #0073aa;
+}
+
+.why-draycir-text a i {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.why-draycir-text a:hover i {
+  transform: translateX(4px);
+}
+
+
+/* Product Update Page */
+.product-update {
+  padding: 5rem 0;
+  background-color: #000;
+  background-image:
+    radial-gradient(circle at top left, rgba(0, 100, 150, 0.5), transparent 50%),
+    radial-gradient(circle at bottom, rgba(50, 0, 100, 0.5), transparent 50%);
+  color: white;
+  min-height: 100vh;
+}
+
+.product-update h1 {
+  font-family: "Montserrate", sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  padding: 2rem 0;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 204, 255, 0.6),
+    0 0 10px rgba(0, 170, 255, 0.5),
+    0 0 15px rgba(0, 136, 255, 0.4);
+}
+
+.release-notes-header h2 {
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 204, 255, 0.6),
+    0 0 10px rgba(0, 170, 255, 0.5),
+    0 0 15px rgba(0, 136, 255, 0.4);
+}
+
+.product-update-content {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.PU-container {
+  background-color: white;
+  color: #000000;
+  border-radius: 20px;
+  border: none;
+  padding: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+.PU-container h2 {
+  color: #000060;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 1rem 0;
+}
+
+.PU-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.PU-list a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #000060;
+}
+
+.PU-list a:hover {
+  text-decoration: underline;
+}
+
+.PU-list i {
+  color: #00b430;
+}
+
+.PU-list span {
+  color: #646464;
+}
+
+.PU-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.PU-container:hover {
+  transform: translateY(-8px);
+  background-color: #f0faff;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 191, 255, 0.4);
+  cursor: pointer;
+}
+
+/* COMPATIBILLITY GUIDE SECTION */
+.Compatibility-Guide-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 70%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.Compatibility-Guide-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+}
+
+.Compatibility-Guide-item img {
+  max-width: 50%;
+  border: none;
+  border-radius: 10px;
+  padding-bottom: 1rem;
+}
+
+.Compatibility-Guide-item h3 {
+  padding-bottom: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.Compatibility-Guide-item i {
+  color: white;
+  font-size: 3.5rem;
+  padding-bottom: 1rem;
+}
+
+.Compatibility-Guide-item span {
+  color: #00fc00;
+}
+
+.Compatibility-Guide-item a:hover {
+  box-shadow: 0 8px 20px rgba(0, 174, 255, 0.5);
+  transform: translateY(-8px);
+}
+
+/* POPUP LOGIN FOR DOWNLOAD FILES */
+.login-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background: #fff;
+  width: 320px;
+  margin: 8% auto;
+  padding: 30px 20px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: "Anuphan", sans-serif;
+}
+
+.user-icon {
+  font-size: 60px;
+  color: #0078d4;
+  margin-bottom: 10px;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.popup-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.popup-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.popup-content button:hover {
+  background-color: #005fa3;
+}
+
+.popup-links {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+}
+
+.popup-links a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.popup-links a:hover {
+  text-decoration: underline;
+}
+
+.popup-links p {
+  padding-top: 1rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ใช้ร่วม popup login */
+#contactPopup .popup-content h2 {
+  margin-top: 0;
+}
+
+#contactPopup input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#contactPopup button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#contactPopup button:hover {
+  background-color: #1e7e34;
+}
+
+#contactForm input,
+#contactForm textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-family: "Anuphan", sans-serif;
+}
+
+.close-contact-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* MISys PAGGE START */
+#sub-nav-MISys {
+  top: 0;
+  left: 0;
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 1000;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  padding-top: 1rem;
+}
+
+.MISys-header {
+  display: flex;
+  padding: 8rem 0 4rem;
+}
+
+.MISys-header-section {
+  width: 80%;
+  height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.MISys-content {
+  font-family: "Montserrat", sans-serif;
+  max-width: 55%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 20px;
+  margin-top: 4rem;
+}
+
+.MISys-content h1 {
+  font-size: 2.5rem;
+  padding-bottom: 0.5rem;
+  color: #003366;
+}
+
+.MISys-content ul {
+  padding: 1rem 0 1rem 2rem;
+  list-style: none;
+}
+
+.MISys-content ul li {
+  color: #333;
+  line-height: 1.4rem;
+  font-weight: 500;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 5px;
+}
+
+.MISys-content ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: green;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.MISys-main-section {
+  max-width: 70%;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  padding: 2rem 0;
+}
+
+.MISys-main-content {
+  padding: 1rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.MISys-main-content.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.MISys-main-content h2 {
+  font-size: 2rem;
+  color: #004080;
+  padding-bottom: 1rem;
+}
+
+.MISys-main-content p,
+.MISys-main-content ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.MISys-main-content h3 {
+  padding-bottom: 1rem;
+}
+
+.MISys-main-content ul {
+  padding-left: 2rem;
+}
+
+.MISys-main-content ul li {
+  padding-bottom: 0.3rem;
+}
+
+.MISys-modules-list span {
+  color: #2f80ed;
+  font-weight: 600;
+}
+
+.MISys-video-content {
+  max-width: 70%;
+  background-color: #2f80ed;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-family: "Inter", sans-serif;
+  gap: 2rem;
+  border-radius: 50px;
+}
+
+.MISys-video-text {
+  display: flex;
+  max-width: 60%;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0 1rem 2rem;
+}
+
+.MISys-video-text h2 {
+  font-size: 2.5rem;
+  color: #ffd700;
+  padding-bottom: 1rem;
+}
+
+.MISys-video-text p {
+  font-size: 1.3rem;
+  color: #fff;
+  line-height: 1.5;
+  padding-bottom: 1rem;
+}
+
+.MISys-video-text a {
+  color: #000;
+  text-decoration: none;
+}
+
+.MISys-video-text button {
+  background-color: #00d639;
+  max-width: fit-content;
+  border: 2px solid #00d639;
+}
+
+.MISys-video-text button:hover {
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+.MISys-video-content img {
+  max-width: 40%;
+  margin: 0 auto;
+  display: flex;
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+/* ORCHID SYSTEM - PAGE START */
+.orchid-header-container {
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  align-items: center;
+}
+
+.orchid-header-container img {
+  max-width: 45%;
+}
+
+.orchid-container-text h1 {
+  font-size: 3.3rem;
+  padding-bottom: 1rem;
+}
+
+.orchid-container-text h2 {
+  padding-bottom: 1rem;
+}
+
+.orchid-container-text p {
+  line-height: 1.5;
+}
+
+.orchid-Collaboration {
+  padding: 4rem 0 1rem;
+}
+
+.orchid-container {
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  padding-top: 1rem;
+}
+
+.orchid-feature-text h2 {
+  font-size: 1.8rem;
+  padding: 0 0 1rem;
+  color: #e66b1e;
+}
+
+.orchid-feature-text a {
+  text-decoration: none;
+}
+
+.orchid-feature-text p {
+  line-height: 1.5;
+}
+
+.orchid-feature-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.orchid-feature-box {
+  padding: 1rem;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.orchid-feature-box a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.orchid-feature-box h4 {
+  padding-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.orchid-feature-box p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-top: 0.8rem;
+}
+
+.orchid-feature-box img {
+  max-width: 40%;
+}
+
+.orchid-integration-section {
+  padding: 2rem 0;
+  background-color: #f4f4f4;
+}
+
+.orchid-Financial-section {
+  padding: 2rem 0;
+}
+
+.orchid-Budgeting-section {
+  background-color: #f4f4f4;
+  padding: 2rem 0;
+}
+
+.orchid-operation-section {
+  padding: 3rem 0 2rem;
+}
+
+
+/*ORCHID USB-NAV */
+#orchid-sub-menu a {
+  color: #005c90;
+}
+
+#orchid-sub-menu a.current-page::after {
+  background-color: #3f78b3;
+}
+
+#orchid-sub-menu li a.current-page {
+  color: #003366;
+}
+
+#orchid-sub-menu li a.current-page:hover {
+  color: #3f78b3;
+}
+
+.dropdown-menu-ISV {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f8fb;
+  display: none;
+  border: 1px solid #379aff;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.dropdown-menu-ISV li {
+  margin: 0;
+}
+
+.dropdown-menu-ISV a {
+  color: #005fa3;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  font-size: 0.8rem;
+}
+
+.dropdown-menu-ISV li a:hover {
+  background-color: #6fb7ff;
+}
+
+.dropdown:hover .dropdown-menu-ISV {
+  display: block;
+}
